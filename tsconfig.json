@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "rootDir": "./webapp",
+    "outDir": "./dist",
+    "moduleResolution": "bundler",
+    "noEmitOnError": false,
+    "paths": {
+      "com/eiffage/sdt/*": [
+        "./webapp/*"
+      ],
+      "unit/*": [
+        "./webapp/test/unit/*"
+      ],
+      "integration/*": [
+        "./webapp/test/integration/*"
+      ]
+    },
+    "types": ["@sapui5/types"]
+  },
+  "include": [
+    "./webapp/**/*"
+  ]
+}
