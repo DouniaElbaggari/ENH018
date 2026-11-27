@@ -1,0 +1,145 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:cssgrid="sap.ui.layout.cssgrid">
+
+    <Panel
+        expandable="true"
+        expanded="false"
+        headerText="Tableaux des retenues"
+        class="invoicePanel">
+        <cssgrid:CSSGrid
+            xmlns:cssgrid="sap.ui.layout.cssgrid"
+            xmlns="sap.m"
+            width="100%"
+            gridTemplateColumns="repeat(5, minmax(0, 1fr))"
+            gridGap="0.5rem">
+
+            <!-- Headers -->
+            <Label text="Libellé Retenue" />
+            <Label text="Pourcentage" />
+            <Label text="Montant" />
+            <Label text="Montant Caution" />
+            <Label text="Montant de retenue facturée" />
+
+            <!-- Row 1: read-only label + editable values -->
+            <Input 
+                value="{salesOrder>/ZZ1_LibellRetenue_SDH}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                id="inPerc1"
+                value="{salesOrder>/ZZ1_Pourcentage1_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inAmount1"
+                value="{salesOrder>/ZZ1_Montant1_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inCaution1"
+                value="{salesOrder>/ZZ1_MontantCaution1_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                value="{salesOrder>/ZZ1_Mntretenuefact1_SDH}"
+                width="100%"
+                textAlign="End"
+                type="Number" 
+                enabled="false"/>
+            <!-- Row 2: read-only label + editable values -->
+            <Input 
+                value="{salesOrder>/ZZ1_LibellRetenue2_SDH}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                id="inPerc2"
+                value="{salesOrder>/ZZ1_Pourcentage2_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inAmount2"
+                value="{salesOrder>/ZZ1_Montant2_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inCaution2"
+                value="{salesOrder>/ZZ1_MontantCaution2_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                value="{salesOrder>/ZZ1_Mntretenuefact2_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+            <!-- Row 3: read-only label + editable values -->
+            <Input 
+                value="{salesOrder>/ZZ1_LibellRetenue3_SDH}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                id="inPerc3"
+                value="{salesOrder>/ZZ1_Pourcentage3_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inAmount3"
+                value="{salesOrder>/ZZ1_Montant3_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create'}"
+                liveChange=".onRetentionChange"/>
+
+            <Input
+                id="inCaution3"
+                value="{salesOrder>/ZZ1_MontantCaution3_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="{= %{viewModel>/mode} === 'Create' || %{viewModel>/mode} === 'Edit' }"/>
+
+            <Input
+                value="{salesOrder>/ZZ1_Mntretenuefact3_SDH}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+        </cssgrid:CSSGrid>
+    </Panel>
+</core:FragmentDefinition>

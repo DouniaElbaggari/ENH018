@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+  <Table 
+    id="salesOrdersTable" 
+     items="{
+        path: 'salesOrderOData>/SalesOrderManage',
+        sorter: {
+            path: 'SalesOrder',
+            descending: true
+        }
+    }"
+    mode="SingleSelectMaster" 
+    itemPress=".onItemPress" 
+    growing="true" 
+    growingScrollToLoad="true">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Sales Orders" level="H2"/>
+        <ToolbarSpacer/>
+        <Button text="Create" press=".onOpenOrderTypeDialog"/>
+        <MenuButton text="Create with Reference">
+          <menu>
+            <Menu>
+              <MenuItem text="Create from Sales Order" press=".onCreateSalesOrderFromSalesOrder"/>
+              <MenuItem text="Create from Contract" press=".onCreateSalesOrderFromContract"/>
+            </Menu>
+          </menu>
+        </MenuButton>
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column id="salesOrderColumn" sortIndicator="Descending">
+        <Text text="Sales Order"/>
+      </Column>
+      <Column>
+        <Text text="Sales Order Type"/>
+      </Column>
+      <Column>
+        <Text text="Sold-to Party"/>
+      </Column>
+      <Column>
+        <Text text="Customer Name"/>
+      </Column>
+       <Column>
+        <Text text="Customer Reference"/>
+      </Column>
+      <!--<Column>
+        <Text text="Requested Delivery Date"/>
+      </Column>-->
+       <!--<Column>
+        <Text text="Overall Status"/>
+      </Column>-->
+       <Column>
+        <Text text="Net Value"/>
+      </Column>
+       <Column id="documentDateColumn">
+        <Text text="Document Date" />
+      </Column>
+      <Column>
+        <Text text="Created By"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem type="Navigation">
+        <cells>
+          <Text text="{salesOrderOData>SalesOrder}"/>
+          <Text text="{salesOrderOData>SalesOrderType}"/>
+          <Text text="{salesOrderOData>SoldToParty}"/>
+          <Text text="{salesOrderOData>CustomerName}"/>
+          <Text text="{salesOrderOData>PurchaseOrderByCustomer}"/>
+          <!--<Text text="{salesOrderOData>RequestedDeliveryDate}"/>-->
+          <!--<Text text="{salesOrderOData>OverallSDProcessStatus}"/>-->
+          <Text text="{salesOrderOData>TotalNetAmount}"/>
+          <Text text="{salesOrderOData>SalesOrderDate}"/>
+          <Text text="{salesOrderOData>CreatedByUser}"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

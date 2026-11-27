@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<Table id="tableProducts" items="{salesOrder>/SalesOrderManage}" mode="SingleSelectMaster" selectionChange=".onItemPress">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Items" level="H2"/>
+        <ToolbarSpacer/>
+        <!--<Button text="Create" press=".onOpenOrderTypeDialog"/>
+        <MenuButton text="Create with Reference">
+          <menu>
+            <Menu>
+              <MenuItem text="Create from Quotation" press=".onCreateSalesOrderFromQuotation"/>
+              <MenuItem text="Create from Contract" press=".onCreateSalesOrderFromContract"/>
+            </Menu>
+          </menu>
+        </MenuButton>-->
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column>
+        <Text text="Sales Contract Item"/>
+      </Column>
+      <Column>
+        <Text text="Product"/>
+      </Column>
+      <Column>
+        <Text text="Target Quantity/Value"/>
+      </Column>
+      <Column>
+        <Text text="Customer Material"/>
+      </Column>
+      <Column>
+        <Text text="Item Category"/>
+      </Column>
+      <Column>
+        <Text text="Net Value"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem type="Navigation" press=".onItemPress">
+        <cells>
+          <Text text="{salesOrder>SalesOrder}"/>
+          <Text text="{salesOrder>SalesOrderType}"/>
+          <Text text="{salesOrder>CustomerName}"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

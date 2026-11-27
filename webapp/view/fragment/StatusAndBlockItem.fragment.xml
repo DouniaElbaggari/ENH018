@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:table="sap.ui.table" xmlns:form="sap.ui.layout.form">
+<form:SimpleForm id="formStatusAndBlockItem" title="Status and Blocks" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+        <form:content>
+            <core:Title text="Processing Status" />
+
+            <Label text="Delivery Status" />
+            <Text text="" />
+
+            <Label text="Order-Related Billing Status" />
+            <Text text=""/>
+
+            <Label text="Rejection Status" />
+            <Text text="{= ${itemDetail>/SalesDocumentRjcnReason} ? 'Rejected' : 'Not Rejected' }" />
+
+            <Label text="Reason for Rejection" />
+            <Text text="{path: 'itemDetail>/SalesDocumentRjcnReason'}"/>
+
+            <core:Title text="Block Status" />
+
+            <Label text="Delivery Block Status" />
+            <Text text="{itemDetail>/DeliveryStatus}" />
+
+            <Label text="Billing Block Status" />
+            <Text text="{= ${itemDetail>/ItemBillingBlockReason} ? 'Blocked' : 'Not Blocked' }" />
+
+            <Label text="Billing Block" />
+            <Text text="{itemDetail>/ItemBillingBlockReason}" />
+
+            <core:Title text="Completion Status" />
+
+            <Label text="Incompletion Status" />
+            <Text text="" />
+
+            <core:Title text="Product Compliance Status" />
+
+            <Label text="Product Marketability Status" />
+            <Text text="" />
+
+            <Label text="Dangerous Goods Status" />
+            <Text text="" />
+
+            <Label text="Safety Data Sheet Status" />
+            <Text text="" />
+        </form:content>
+    </form:SimpleForm>
+</core:FragmentDefinition>

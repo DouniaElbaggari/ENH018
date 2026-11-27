@@ -1,0 +1,85 @@
+<core:FragmentDefinition
+    controllerName="com.eiffage.sdt.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog
+        id="orderTypeSelectionDialog"
+        title="Create"
+        contentWidth="40rem"
+        class="sapUiContentPadding customCreateDialog"
+        draggable="true"
+        resizable="false">
+
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="12"
+                labelSpanL="12"
+                labelSpanM="12"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="true">
+
+                <Label text="Sales Order Type" required="true" />
+                <Select
+                    id="salesOrderTypeSelect"
+                    width="100%"
+                    selectedKey="{salesOrder>/SalesOrderType}"
+                    forceSelection="true"
+                    items="{salesOrderTypeVH>/C_SalesOrderTypeManageVH}">
+                    <core:Item
+                        key="{salesOrderTypeVH>SalesOrderType}"
+                        text="{salesOrderTypeVH>SalesOrderType_Text} ({salesOrderTypeVH>SalesOrderType})" />
+                </Select>
+
+                <Label text="Sales Organization" />
+                <Input
+                    id="inSalesOrg"
+                    value="{descriptions>/salesOrgDescription}"
+                    showValueHelp="true"
+                    valueHelpRequest=".onSalesOrgSingleVH"
+                    width="100%" />
+
+                <Label text="Distribution Channel" />
+                <Input
+                    id="inDistChannel"
+                    value="{descriptions>/distChannelName}"
+                    showValueHelp="true"
+                    valueHelpRequest=".onDistrChannelSingleVH"
+                    width="100%" />
+
+                <Label text="Division" />
+                <Input
+                    id="inDivision"
+                    value="{descriptions>/divisionName}"
+                    showValueHelp="true"
+                    valueHelpRequest=".onDivisionSingleVH"
+                    width="100%" />
+            </f:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button
+                text="Create"
+                type="Emphasized"
+                press=".onCreateSalesOrder" />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onCloseCreateDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

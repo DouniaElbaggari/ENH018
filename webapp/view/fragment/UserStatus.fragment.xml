@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog title="{= ${viewModel>/userStatusEditing} ? 'Change User Status' : 'User Status' }" resizable="true" draggable="true" contentWidth="36rem">
+
+        <content>
+            <VBox visible="{= !${viewModel>/userStatusEditing} }">
+                <core:Fragment id="userStatusDisplay" fragmentName="com.eiffage.sdt.view.fragment.display.UserStatus" type="XML" />
+            </VBox>
+
+            <VBox visible="{viewModel>/userStatusEditing}">
+                <core:Fragment id="userStatusEdit" fragmentName="com.eiffage.sdt.view.fragment.create.UserStatus" type="XML" />
+            </VBox>
+        </content>
+
+        <buttons>
+            <Button
+                text="Edit"
+                type="Emphasized"
+                visible="{= !${viewModel>/userStatusEditing} }"
+                press=".onEditUserStatus" />
+
+            <Button
+                text="Close"
+                visible="{= !${viewModel>/userStatusEditing} }"
+                press=".onCloseUserStatus" />
+
+            <Button
+                text="Apply"
+                type="Emphasized"
+                visible="{viewModel>/userStatusEditing}"
+                press=".onApplyUserStatus" />
+
+            <Button
+                text="Cancel"
+                visible="{viewModel>/userStatusEditing}"
+                press=".onCancelUserStatusEdit" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

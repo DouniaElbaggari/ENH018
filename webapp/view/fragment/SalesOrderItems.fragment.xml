@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table">
+    <IconTabBar id="idTabBarSalesOrderItem" headerMode="Inline" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter text="Montants" key="mo">
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragments.Amounts" type="XML" />
+            </IconTabFilter>
+            <IconTabFilter id="itemTabSalesOrderItems" text="Sales Order Items" key="so">
+                <!--<core:Fragment fragmentName="com.eiffage.sdt.view.fragments.display.SalesOrderItemDisplay" type="XML" />
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragments.create.SalesOrderItemCreate" type="XML" />
+                <Table id="salesOrderItemTable" items="{salesOrder>/SalesOrderItem}" growing="true" growingThreshold="20" mode="SingleSelectMaster" selectionChange="handleRowSelectionChange" alternateRowColors="true" sticky="ColumnHeaders">
+                    <columns>
+                        <Column>
+                            <Label text="Item"/>
+                        </Column>
+                        <Column>
+                            <Label text="Item Text"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product"/>
+                        </Column>
+                        <Column hAlign="End">
+                            <Label text="Quantity"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{salesOrder>SalesOrderItem}"/>
+                                <Text text="{salesOrder>SalesOrderItemText}"/>
+                                <Text text="{salesOrder>Product}"/>
+                                <ObjectNumber number="{salesOrder>RequestedQuantity}" emphasized="true"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>-->
+            </IconTabFilter>
+
+        </items>
+    </IconTabBar>
+
+</core:FragmentDefinition>

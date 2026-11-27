@@ -1,0 +1,52 @@
+<core:FragmentDefinition 
+  xmlns="sap.m" 
+  xmlns:f="sap.f"
+  xmlns:core="sap.ui.core"
+  xmlns:fb="sap.ui.comp.filterbar"
+  id="SalesOrderHeaderFilters">
+
+  <fb:FilterBar id="fragFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad" basicSearch="basicSearchField">
+    <fb:filterGroupItems>
+    <fb:FilterGroupItem name="SalesOrder" label="Sales Order" groupName="Group1" visibleInFilterBar="true">
+        <fb:control>
+          <!--<MultiComboBox name="Category" selectionChange=".onSelectionChange" items="{
+												path: '/ProductCategories',
+												templateShareable: true
+											}">
+            <core:Item key="{key}" text="{name}"/>
+          </MultiComboBox>-->
+        </fb:control>
+      </fb:FilterGroupItem>
+      <fb:FilterGroupItem name="SoldTo" label="Sold-to Party" groupName="Group1" visibleInFilterBar="true">
+        <fb:control>
+          <!--<MultiComboBox name="Name" selectionChange=".onSelectionChange" items="{
+												path: '/ProductNames',
+												templateShareable: true
+											}">
+            <core:Item key="{key}" text="{name}"/>
+          </MultiComboBox>-->
+        </fb:control>
+      </fb:FilterGroupItem>
+      <fb:FilterGroupItem name="Category" label="Category" groupName="Group1" visibleInFilterBar="true">
+        <fb:control>
+          <!--<MultiComboBox name="Category" selectionChange=".onSelectionChange" items="{
+												path: '/ProductCategories',
+												templateShareable: true
+											}">
+            <core:Item key="{key}" text="{name}"/>
+          </MultiComboBox>-->
+        </fb:control>
+      </fb:FilterGroupItem>
+      <fb:FilterGroupItem name="SupplierName" label="Supplier Name" groupName="Group1" visibleInFilterBar="true">
+        <fb:control>
+          <!--<MultiComboBox name="SupplierName" selectionChange=".onSelectionChange" items="{
+												path: '/ProductSuppliers',
+												templateShareable: true
+											}">
+            <core:Item key="{key}" text="{name}"/>
+          </MultiComboBox>-->
+        </fb:control>
+      </fb:FilterGroupItem>
+    </fb:filterGroupItems>
+  </fb:FilterBar>
+</core:FragmentDefinition>

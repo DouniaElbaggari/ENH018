@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog
+        id="billingBlockDialog"
+        title="Set Billing Block"
+        contentWidth="32rem"
+        draggable="true"
+        resizable="false"
+        afterClose=".onBillingBlockDialogAfterClose">
+
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Label text="Billing Block" required="true" labelFor="billingBlockSelect" />
+
+                <Select
+                    id="billingBlockSelect"
+                    width="100%"
+                    selectedKey="{itemDetail>/ItemBillingBlockReason}"
+                    items="{billingBlockVH>/I_BillingBlockReason}"
+                    forceSelection="true"
+                    change=".onBillingBlockChange">
+                    <core:Item
+                        key="{billingBlockVH>BillingBlockReason}"
+                        text="{billingBlockVH>BillingBlockReason_Text} ({billingBlockVH>BillingBlockReason})" />
+                </Select>
+            </VBox>
+        </content>
+
+        <beginButton>
+            <Button
+                text="Set Billing Block"
+                type="Emphasized"
+                press=".onSetBillingBlockPress" />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onCancelBillingBlockPress" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

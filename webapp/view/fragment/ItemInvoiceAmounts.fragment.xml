@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Panel
+        expandable="true"
+        expanded="false"
+        headerText="Tableaux de suivi"
+        class="invoicePanel"
+        visible="{= ${viewModel>/mode} !== 'Create'}">
+
+        <HBox class="trackingWrapper" wrap="Wrap" alignItems="Start">
+
+            <VBox class="invoiceSummary">
+                <HBox class="summaryRow">
+                    <Text class="leadCell" text="Montant total avance" wrapping="false"/>
+                    <Text class="amountCell" text="{path: 'calculatedAmounts>/TotalAdvancedAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="percentCell" text="{calculatedAmounts>/TotalAdancedPercentage} %" wrapping="false"/>
+                </HBox>
+                <HBox class="summaryRow">
+                    <Text class="leadCell" text="Avance reprise" wrapping="false"/>
+                    <Text class="amountCell" text="{path: 'calculatedAmounts>/PaidAdvancedAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="percentCell" text="{calculatedAmounts>/PaidAdvancedPercentage} %" wrapping="false"/>
+                </HBox>
+                <HBox class="summaryRow">
+                    <Text class="leadCell" text="Avance à reprendre" wrapping="false"/>
+                    <Text class="amountCell" text="{path:'calculatedAmounts>/OutstandingAdvancedAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="percentCell" text="{calculatedAmounts>/OutstandingAdvancedPercentage} %" wrapping="false"/>
+                </HBox>
+            </VBox>
+
+            <VBox class="metricsBlock">
+                <HBox class="metricsHeaderRow">
+                    <Text class="metricsHeaderCell" text="Montant période"/>
+                    <Text class="metricsHeaderCell" text="% période"/>
+                    <Text class="metricsHeaderCell" text="Montant antérieur"/>
+                    <Text class="metricsHeaderCell" text="% antérieur"/>
+                    <Text class="metricsHeaderCell" text="Montant cumulé"/>
+                    <Text class="metricsHeaderCell" text="% cumulé"/>
+                </HBox>
+
+                <HBox class="metricsValueRow">
+                    <Text class="metricsValueCell" text="{path: 'itemInvoiceTrackingData>/PeriodAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="metricsValueCell" text="{itemInvoiceTrackingData>/PeriodPercentage} %" wrapping="false"/>
+                    <Text class="metricsValueCell" text="{path: 'itemInvoiceTrackingData>/PreviousAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="metricsValueCell" text="{itemInvoiceTrackingData>/PreviousPercentage} %" wrapping="false"/>
+                    <Text class="metricsValueCell" text="{path: 'itemInvoiceTrackingData>/CumulativeAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}} €" wrapping="false"/>
+                    <Text class="metricsValueCell" text="{itemInvoiceTrackingData>/CumulativePercentage} %" wrapping="false"/>
+                </HBox>
+            </VBox>
+
+        </HBox>
+    </Panel>
+</core:FragmentDefinition>

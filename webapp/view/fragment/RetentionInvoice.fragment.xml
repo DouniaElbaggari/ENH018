@@ -1,0 +1,130 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:cssgrid="sap.ui.layout.cssgrid">
+
+    <Panel
+        expandable="true"
+        expanded="false"
+        headerText="Tableaux des retenues"
+        class="invoicePanel">
+        <cssgrid:CSSGrid
+            xmlns:cssgrid="sap.ui.layout.cssgrid"
+            xmlns="sap.m"
+            width="100%"
+            gridTemplateColumns="repeat(5, minmax(0, 1fr))"
+            gridGap="0.5rem">
+
+            <!-- Headers -->
+            <Label text="Libellé Retenue" />
+            <Label text="Pourcentage" />
+            <Label text="Montant" />
+            <Label text="Montant Caution" />
+            <Label text="Montant de retenue facturée" />
+
+            <!-- Row 1: read-only label + editable values -->
+            <Input 
+                value="{invoiceWitholding>/Description1}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Percentage1}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Amount1}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/DepositAmount1}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="true"/>
+
+            <Input
+                value="{invoiceWitholding>/InvoicedAmount1}"
+                width="100%"
+                textAlign="End"
+                type="Number" 
+                enabled="false"/>
+            <!-- Row 2: read-only label + editable values -->
+            <Input 
+                value="{invoiceWitholding>/Description2}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Percentage2}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Amount2}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/DepositAmount2}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="true"/>
+
+            <Input
+                value="{invoiceWitholding>/InvoicedAmount2}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+            <!-- Row 3: read-only label + editable values -->
+            <Input 
+                value="{invoiceWitholding>/Description3}" 
+                width="100%"
+                textAlign="Begin"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Percentage3}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/Amount3}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+            <Input
+                value="{invoiceWitholding>/DepositAmount3}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="true"/>
+
+            <Input
+                value="{invoiceWitholding>/InvoicedAmount3}"
+                width="100%"
+                textAlign="End" 
+                type="Number"
+                enabled="false"/>
+
+        </cssgrid:CSSGrid>
+    </Panel>
+</core:FragmentDefinition>
