@@ -1,0 +1,12 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage id="contractDetailPage" headerExpanded="true">
+    </f:DynamicPage>
+</mvc:View>
