@@ -1,0 +1,71 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.InvoiceCreate"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+    <SplitContainer
+        id="pageCreateInvoice"
+        initialMaster="master">
+        <masterPages>
+            <Page id="master" title="Billing Documents" backgroundDesign= "List">
+                <List id="listBillingDoc" items="{billingDocList>/items}">
+                    <ObjectListItem
+			            title="{billingDocList>BillingDocument}"
+                        type="Active"
+                        press=".onListItemPress"
+                        number="{
+                            parts:[{path:'billingDocList>TotalAmount'},{path:'billingDocList>Currency'}],
+				            type: 'sap.ui.model.type.Currency',
+				            formatOptions: {showMeasure: false}}"
+                        numberUnit="{billingDocList>Currency}">
+			            <firstStatus>
+				            <ObjectStatus text="{billingDocList>Status}" state="{billingDocList>State}" />
+			            </firstStatus>
+                    </ObjectListItem>
+                </List>
+
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer/>
+                        <!--<Button type="Emphasized" text="Save All" press=".onSave"/>
+                        <Button type="Ghost" text="Cancel All" press=".onCancel"/>-->
+                    </OverflowToolbar>
+		        </footer>
+            </Page>
+        </masterPages>
+        
+        <detailPages>
+            <Page id="invoiceInfo">
+                <headerContent>
+                    <Button
+                        icon="sap-icon://receipt"
+                        type="Ghost"
+                        press=".onDeclareCreance"
+                        enabled="true"
+                        tooltip="Déclaration de créance" 
+                        visible="{viewModel>/isBelgium}"/>
+                 </headerContent>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.RetentionInvoice" type="XML" />
+                <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.InvoicePageHeader" type="XML"/>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.InvoiceDetails" type="XML"/>
+                <footer>
+                    <OverflowToolbar>
+                        <Button
+                            id="messagePopoverButtonInvoice"
+                            icon="sap-icon://message-popup"
+                            text="{= ${appMessages>/messages}.length }"
+                            press=".onShowMessages"
+                            visible="{= ${appMessages>/messages}.length > 0 }" 
+                            type="Reject"/>  
+                        <ToolbarSpacer/>
+                        <Button type="Emphasized" text="Save" press=".onSave" enabled="{viewModel>/notInvoiced}" visible="{= !${viewModel>/showInvoiceCrateBackButton} }"/>
+                        <Button type="Ghost" text="Cancel" press=".onCancel" visible="{= !${viewModel>/showInvoiceCrateBackButton} }"/>
+                        <Button type="Ghost" text="Back" press=".onBack" visible="{viewModel>/showInvoiceCrateBackButton}"/>
+                    </OverflowToolbar>
+		        </footer>
+            </Page> 
+        </detailPages>
+    </SplitContainer>
+    </mvc:View>
