@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <form:SimpleForm id="Delivery" editable="true" layout="ResponsiveGridLayout" title="Delivery" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+        <form:content>
+            <core:Title text="Basic Data" />
+            <Label text="Requested Delivery Date" />
+            <Text text="{salesOrder>/SoldToParty}" />
+
+            <Label text="Requested Quantity" />
+            <Text text="{path: 'salesOrder>/BillingDocumentDate', formatter: '.formatter.formatDocumentDate'}" />
+
+            <core:Title text=" " />
+
+            <Label text="Delivery Priority" />
+            <Text text="{/CustomerReference}" />
+
+            <Label text="Partial Delivery for Item" />
+            <Text text="{/CustomerReference}" />
+
+            <core:Title text=" " />
+
+            <Label text="Number of Partial Deliveries" />
+            <Text text="{/ShippingConditions}" />
+
+            <Label text="Delivery Group" />
+            <Text text="{path: 'salesOrder>/RequestedDeliveryDate' , formatter: '.formatter.formatDocumentDate'}" />
+        </form:content>
+    </form:SimpleForm>
+
+    <Title text="Schedule Lines" level="H4" class="sapUiMediumMarginTop sapUiSmallMarginBottom" />
+
+    <Table id="tableScheduleLines" items="{salesOrder>/to_ScheduleLine}" width="100%">
+        <columns>
+            <Column width="10rem">
+                <Label text="Delivery Date" />
+            </Column>
+            <Column width="16rem">
+                <Label text="Requested Quantity" />
+            </Column>
+            <Column width="16rem">
+                <Label text="Confirmed Delivery Date" />
+            </Column>
+            <Column width="12rem">
+                <Label text="Confirmed Quantity" />
+            </Column>
+            <Column width="12rem">
+                <Label text="Delivered Quantity" />
+            </Column>
+            <Column width="12rem">
+                <Label text="Open Quantity" />
+            </Column>
+            <Column width="12rem">
+                <Label text="Delivered Block" />
+            </Column>
+        </columns>
+
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{path: 'salesOrder>RequestedDeliveryDate', formatter: '.formatter.formatDocumentDate'}" />
+                    <Text text="{salesOrder>ScheduleLineOrderQuantity}" />
+                    <Text text="{salesOrder>ConfirmedDeliveryDate}" />
+                    <Text text="{salesOrder>ConfdOrderQtyByMatlAvailCheck}" />
+                    <Text text="{salesOrder>DeliveredQtyInOrderQtyUnit}" />
+                    <Text text="{salesOrder>OpenConfdDelivQtyInOrdQtyUnit}" />
+                    <Text text="{salesOrder>DelivBlockReasonForSchedLine}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

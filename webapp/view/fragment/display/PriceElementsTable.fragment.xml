@@ -1,0 +1,90 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+    <VBox class="sapUiSmallMarginTop">
+        <form:SimpleForm
+            id="PricingDataDisplay"
+            editable="false"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="4"
+            labelSpanS="12"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="1"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="true">
+            <form:content>
+                <Label text="Net" />
+                <ObjectNumber
+                    number="{salesOrder>/TotalNetAmount}"
+                    unit="{salesOrder>/TransactionCurrency}" />
+
+                <Label text="Tax" />
+                <ObjectNumber
+                    number="{salesOrder>/TaxAmount}"
+                    unit="{salesOrder>/TransactionCurrency}" />
+            </form:content>
+        </form:SimpleForm>
+        
+        <Table
+            id="tablePriceElementsDisplay"
+            items="{salesOrder>/to_PricingElement}"
+            mode="None">
+            
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Pricing Elements" level="H2"/>
+                </OverflowToolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column width="2em"/>
+                <Column>
+                    <Text text="Condition Type" />
+                </Column>
+                <Column>
+                    <Text text="Description" />
+                </Column>
+                <Column>
+                    <Text text="Condition Amount or Ratio" />
+                </Column>
+                <Column>
+                    <Text text="Pricing Unit" />
+                </Column>
+                <Column>
+                    <Text text="Condition Value" />
+                </Column>
+                <Column>
+                    <Text text="Statistical"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="{= ${salesOrder>ConditionInactiveReason} === '' ? 'sap-icon://color-fill' : 'sap-icon://project-definition-triangle-2' }" color="{= ${salesOrder>ConditionInactiveReason} === '' ? 'Positive' : '#E9730C' }" />
+                        <Text text="{salesOrder>ConditionType}" />
+                        <Text text="{salesOrder>ConditionTypeName}" />
+                        <HBox >
+                            <Text visible="{= ${salesOrder>ConditionCalculationType} === 'A' &amp;&amp; ${salesOrder>ConditionRateValue} > 0}" class="sapUiLargeMarginEnd" text="{ path: 'salesOrder>ConditionRateValue' , type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                            <Text visible="{= ${salesOrder>ConditionCalculationType} === 'A' &amp;&amp; ${salesOrder>ConditionRateValue} > 0}" text="{= ${salesOrder>ConditionCurrency} ? ${salesOrder>ConditionCurrency} : '%' }" />
+                        </HBox>
+                        <Text text="{salesOrder>ConditionQuantityUnit}" visible="false" />
+                        <HBox justifyContent="End">
+                            <Text  textAlign="End"  text="{ path: 'salesOrder>ConditionAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                            <Text class="sapUiLargeMarginBegin" text="{salesOrder>TransactionCurrency}" />
+                        </HBox>
+                        <Text text="{= ${salesOrder>ConditionIsForStatistics} ? 'Yes' : '' }" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

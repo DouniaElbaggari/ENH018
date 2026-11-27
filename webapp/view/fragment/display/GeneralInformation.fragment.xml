@@ -1,0 +1,95 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <VBox class="sapUiResponsiveContentPadding sapUiSmallMarginTop" >
+
+        <HBox class="sapUiMediumMarginBottom">
+            <!-- Left -->
+            <VBox width="100%">
+                <form:SimpleForm id="Display" editable="true" layout="ResponsiveGridLayout" title="Basic Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text="Order Data"/>
+                        <Label text="Sold-to Party"/>
+                        <Text text="{salesOrder>/SoldToParty}"/>
+
+                        <Label text="Document Date"/>
+                        <Text text="{path: 'salesOrder>/BillingDocumentDate', formatter: '.formatter.formatDocumentDate'}"/>
+
+                        <core:Title text=" "/>
+
+                        <Label text="Customer Reference"/>
+                        <Text text="{salesOrder>/PurchaseOrderByCustomer}"/>
+
+                        <Label text="{i18n>salesOrderHeader.basicdata.CustRefDate}"/>
+                        <Text text="{path: 'salesOrder>/CustomerPurchaseOrderDate', formatter: '.formatter.formatDocumentDate'}"/>
+
+                        <Label text="Order Reason"/>
+                        <Text text="{salesOrder>/OrderReason}"/>
+                    </form:content>
+                </form:SimpleForm>
+            </VBox>
+        </HBox>
+        
+        <form:SimpleForm id="advancedDataSimpleFormDisplay" editable="true" layout="ResponsiveGridLayout" title="Advanced Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                <form:content>
+                    <core:Title text="Organizational Data"/>
+
+                    <Label text="Sales Organization"/>
+                    <Text text="{salesOrder>/SalesOrganization}" />
+
+                    <Label text="Distribution Channel"/>
+                    <Text text="{salesOrder>/DistributionChannel}" />
+
+                    <Label text="Division"/>
+                    <Text text="{salesOrder>/OrganizationDivision}"/>
+
+                    <core:Title text="Administrative Data"/>
+
+                    <Label text="Created By"/>
+                    <Text text="{salesOrder>/CreatedByUser}" />
+
+                    <Label text="Created On"/>
+                    <Text text="{path: 'salesOrder>/CreationDate', formatter: '.formatter.formatDocumentDate'}"/>
+
+                    <Label text="Last Changed By"/>
+                    <Text text="" />
+
+                    <Label text="Last Changed On"/>
+                    <Text text="{path: 'salesOrder>/LastChangeDate', formatter: '.formatter.formatDocumentDate'}"/>
+            </form:content>
+        </form:SimpleForm>
+        
+        <Title text="Partners" level="H4" class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+        <Table id="partnersTableDisplay" items="{salesOrder>/to_Partner}" width="100%">
+            <columns>
+                <Column width="10rem">
+                    <Label text="Partner Function"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Partner"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Address"/>
+                </Column>
+                <Column width="12rem">
+                    
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{salesOrder>PartnerFunction}"/>
+                        <Text text="{salesOrder>to_Address/FullName} ({salesOrder>Customer})"/>
+                        <Text text="{salesOrder>to_Address/StreetName}, {salesOrder>to_Address/PostalCode}, {salesOrder>to_Address/CityName}, {salesOrder>to_Address/Country}"/>
+                        <Link text="Details" press=".onBPAddressDetailPress"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

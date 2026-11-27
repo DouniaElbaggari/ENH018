@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Table 
+    id="tableTextDisplay" 
+    items="{salesOrder>/to_Text}" 
+    alternateRowColors="true" 
+    sticky="ColumnHeaders"
+    class="sapUiSmallMarginTop">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Sales Order Texts" level="H2"/>
+        <ToolbarSpacer/>
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column>
+        <Text text="Text Type"/>
+      </Column>
+      <Column>
+        <Text text="Language"/>
+      </Column>
+      <Column>
+        <Text text="Text"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{salesOrder>LongTextID}"/>
+          <Text text="{salesOrder>Language}"/>
+          <TextArea value="{salesOrder>LongText}" rows="3" width="100%" growing="true" editable="false" change=".onTextChange"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

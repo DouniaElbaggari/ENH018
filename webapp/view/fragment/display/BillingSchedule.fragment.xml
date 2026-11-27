@@ -1,0 +1,122 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    
+
+    <Panel class="sapUiSmallMarginTop">
+        <HBox>
+          <f:SimpleForm
+            editable="false"
+            layout="ResponsiveGridLayout"
+            maxContainerCols="3"
+            columnsM="3"
+            columnsL="3"
+            columnsXL="3"
+            labelSpanM="4"
+            labelSpanL="4"
+            labelSpanXL="4"
+            labelSpanS="12"
+            emptySpanM="0"
+            emptySpanL="0"
+            emptySpanXL="0"
+            emptySpanS="0"
+            adjustLabelSpan="false"
+            class="sapUiSmallMarginBottom">
+
+            <f:content>
+                <Label text="Net Value" />
+                <HBox alignContent="End">
+                <Text textAlign="End" text="{path: 'itemDetail>/NetAmount',type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                <Text class="sapUiLargeMarginBegin" text="{itemDetail>/TransactionCurrency}"/>
+                </HBox>
+            </f:content>
+          </f:SimpleForm>
+
+          <f:SimpleForm
+            editable="false"
+            layout="ResponsiveGridLayout"
+            maxContainerCols="6"
+            columnsM="6"
+            columnsL="6"
+            columnsXL="6"
+            labelSpanM="4"
+            labelSpanL="4"
+            labelSpanXL="4"
+            labelSpanS="12"
+            emptySpanM="0"
+            emptySpanL="0"
+            emptySpanXL="0"
+            emptySpanS="0"
+            adjustLabelSpan="false"
+            visible="{viewModel>/periodicCalendar}">
+          
+           <f:content>
+                <Label text="Date début" />
+                <Text text="{path: 'itemDetail>/to_BillingPlan/BillingPlanStartDate', formatter: '.formatter.formatDocumentDate'}" />
+                
+
+                
+                <Label text="Date fin" />
+                <Text text="{path: 'itemDetail>/to_BillingPlan/BillingPlanEndDate', formatter: '.formatter.formatDocumentDate'}" />
+
+              
+                <Label text="Périodicité" />
+                <Text text="Mensuelle" />
+            </f:content>
+        </f:SimpleForm>
+      </HBox>
+      
+      <Table id="tableBillingSchedule" items="{itemDetail>/to_BillingPlan/to_BillingPlanItem}" mode="None">
+      <Label text="Calendrier de facturation"/>
+                        
+        <columns>
+          <Column>
+            <Text text="Billing Date"/>
+          </Column>
+          <Column>
+            <Text text="%"/>
+          </Column>
+          <Column>
+            <Text text="Due Amount"/>
+          </Column>
+          <Column>
+            <Text text="Currency"/>
+          </Column>
+          <Column>
+            <Text text="Blocked"/>
+          </Column>
+          <Column>
+            <Text text="Invoice Type"/>
+          </Column>
+          <Column>
+            <Text text="Document Number"/>
+          </Column>
+          <Column>
+            <Text text="Reference document number"/>
+          </Column>
+          <Column>
+            <Text text="Processing status"/>
+          </Column>
+        </columns>
+
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{path: 'itemDetail>BillingPlanBillingDate', formatter:'.formatter.formatDocumentDate'}"/>
+              <Text text="{itemDetail>BillingPlanAmountPercent}"/>
+              <Text text="{path: 'itemDetail>BillingPlanAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+              <Text text="{itemDetail>TransactionCurrency}"/>
+              <Text text="{itemDetail>BillingBlockReason}"/>
+              <Text text="{itemDetail>ProposedBillingDocumentType}"/>
+              <Link text="{itemDetail>BillingDocument}" press=".onNavToInvoice"/>
+              <Text text="{itemDetail>CreditNoteDocument}"/>
+              <Text text="{itemDetail>BillingPlanRelatedBillgStatusDescription}"/>
+            </cells>
+          </ColumnListItem>
+        </items>
+
+      </Table>
+    </Panel>
+</core:FragmentDefinition>

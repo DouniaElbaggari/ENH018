@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <VBox class="sapUiResponsiveContentPadding sapUiSmallMarginTop" width="100%">
+    <form:SimpleForm id="billingDataSimpleFormDisplay" editable="true" layout="ResponsiveGridLayout" title="Billing" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text=""/>
+                        <Label text="Fixed Value Date"/>
+                        <Text text="{path: 'itemDetail>/FixedValueDate', formatter: '.formatter.formatDocumentDate'}"/>
+                        <Label text="Billing Date"/>
+                        <Text text="{path: 'itemDetail>/BillingDocumentDate', formatter: '.formatter.formatDocumentDate'}"/>
+                    </form:content>
+                </form:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>

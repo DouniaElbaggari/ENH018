@@ -1,0 +1,84 @@
+
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table">
+    <VBox class="sapUiResponsiveContentPadding">
+                <Table id="salesOrderItemTable" 
+                    items="{salesOrder>/to_Item}" 
+                    growing="true" 
+                    growingThreshold="20" 
+                    alternateRowColors="true" 
+                    sticky="ColumnHeaders"
+                    mode="SingleSelectMaster" 
+                    itemPress=".onItemPress"
+                    class="sapUiSmallMarginTop">
+                    <headerToolbar>
+                        <OverflowToolbar id="otbSubheaderDisplay">
+                            <Title text="Products" level="H2" />
+                            <ToolbarSpacer />
+                        </OverflowToolbar>
+				    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Label text="Item"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product Description"/>
+                        </Column>
+                        <Column>
+                            <Label text="Requested Quantity"/>
+                        </Column>
+                        <Column>
+                            <Label text="Confirmed Quantity"/>
+                        </Column>
+                        <Column>
+                            <Label text="Item Category"/>
+                        </Column>
+                        <Column>
+                            <Label text="Customer Material"/>
+                        </Column>
+                        <Column
+                            width="16rem"
+                            hAlign="Begin">
+                            <header>
+                                <Text text="Net Value" />
+                            </header>
+                        </Column>
+                        <Column>
+                            <Label text="WBS Element"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation">
+
+                            <cells>
+                               <Text text="{salesOrder>SalesOrderItem}"/>
+                               <Text text="{salesOrder>Material}"/>
+                               <Text text="{salesOrder>SalesOrderItemText}"/>
+                               <HBox>
+                                    <Text class="sapUiSmallMarginEnd" text="{salesOrder>RequestedQuantity}"/>
+                                    <Text text="{salesOrder>RequestedQuantityUnit}"/>
+                               </HBox>
+                               <Text text="{salesOrder>ConfdDelivQtyInOrderQtyUnit}"/>
+                               <Text text="{salesOrder>SalesOrderItemCategory}"/>
+                               <Text text="{salesOrder>MaterialByCustomer}"/>
+                              <HBox width="100%" alignItems="Center" justifyContent="Start">
+                                <Text
+                                    text="{path: 'salesOrder>NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"
+                                    width="6rem"
+                                    textAlign="Begin" />
+                                <Text
+                                    text="{salesOrder>TransactionCurrency}"
+                                    width="3rem" />
+                            </HBox>
+                            <Text text="{salesOrder>WBSElement}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                </VBox>
+</core:FragmentDefinition>

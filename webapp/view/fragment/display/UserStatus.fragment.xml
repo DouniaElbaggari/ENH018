@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+        <Table
+            id="userStatusTableDisplay"
+            mode="None"
+            includeItemInSelection="true"
+            items="{userStatuses>/results}">
+
+            <columns>
+                <Column>
+                </Column>
+                <Column width="5rem">
+                    <Text text="Status" />
+                </Column>
+                <Column>
+                    <Text text="Text" />
+                </Column>
+                <Column width="4rem" hAlign="End">
+                    <Text text="No." />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="sap-icon://circle-task-2" visible="{userStatuses>CurrentStatus}" />
+                        <Text text="{userStatuses>Status}" />
+                        <Text text="{userStatuses>StatusDescription}" />
+                        <Text text="{userStatuses>StatusOrder}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+</core:FragmentDefinition>
