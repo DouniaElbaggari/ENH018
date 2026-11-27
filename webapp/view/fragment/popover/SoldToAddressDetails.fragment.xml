@@ -1,0 +1,171 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Popover
+        id="popoverSoldToAddress"
+        title="Address Details for Sold-to Party: {address>/FullName} ({address>/BusinessPartner})"
+        class="addressDetailsPopover"
+        placement="Left"
+        resizable="true"
+        contentWidth="1100px"
+        contentHeight="auto"
+        horizontalScrolling="false"
+        verticalScrolling="true"
+        initialFocus="close">
+
+        <content>
+            <VBox class="adpRoot">
+                <VBox class="adpContent">
+                    <HBox
+                        width="100%"
+                        wrap="Wrap"
+                        class="adpTopGrid">
+
+                        <VBox class="adpSection adpNameSection">
+                            <Title
+                                text="Name"
+                                level="H3"
+                                class="adpSectionTitle" />
+
+                            <HBox
+                                width="100%"
+                                wrap="Wrap"
+                                class="adpFieldGrid">
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Title Key" class="adpFieldLabel" />
+                                    <Text text="{address>/titleKey}" wrapping="true" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Full Name" class="adpFieldLabel" />
+                                    <Text text="{address>/FullName}" wrapping="true" class="adpFieldValue" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <VBox class="adpSection adpAddressSection">
+                            <Title
+                                text="Address"
+                                level="H3"
+                                class="adpSectionTitle" />
+
+                            <HBox
+                                width="100%"
+                                wrap="Wrap"
+                                class="adpFieldGrid">
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Street" class="adpFieldLabel" />
+                                    <Text text="{address>/StreetName}" wrapping="true" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="House Number" class="adpFieldLabel" />
+                                    <Text text="{address>/HouseNumber}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="District" class="adpFieldLabel" />
+                                    <Text text="{address>/District}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Postal Code" class="adpFieldLabel" />
+                                    <Text text="{address>/PostalCode}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="City" class="adpFieldLabel" />
+                                    <Text text="{address>/CityName}" wrapping="true" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Country/Region Key" class="adpFieldLabel" />
+                                    <Text text="{address>/Country}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Region" class="adpFieldLabel" />
+                                    <Text text="{address>/Region}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Tax Jurisdiction" class="adpFieldLabel" />
+                                    <Text text="{address>/TaxJurisdiction}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Transportation Zone" class="adpFieldLabel" />
+                                    <Text text="{address>/TransportZone}" class="adpFieldValue" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <HBox
+                        width="100%"
+                        wrap="Wrap"
+                        class="adpBottomGrid">
+
+                        <VBox class="adpSection adpNameSection">
+                            <Title
+                                text="PO Box Address"
+                                level="H3"
+                                class="adpSectionTitle" />
+
+                            <HBox
+                                width="100%"
+                                wrap="Wrap"
+                                class="adpFieldGrid">
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="PO Box" class="adpFieldLabel" />
+                                    <Text text="{address>/POBox}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="PO Box Postal Code" class="adpFieldLabel" />
+                                    <Text text="{address>/POBoxPostalCode}" class="adpFieldValue" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <VBox class="adpSection adpAddressSection">
+                            <Title
+                                text="Communication"
+                                level="H3"
+                                class="adpSectionTitle" />
+
+                            <HBox
+                                width="100%"
+                                wrap="Wrap"
+                                class="adpFieldGrid">
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Correspondence Language" class="adpFieldLabel" />
+                                    <Text text="{address>/CorrespondenceLanguage}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Phone" class="adpFieldLabel" />
+                                    <Text text="{address>/PhoneNumber}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="Mobile" class="adpFieldLabel" />
+                                    <Text text="{address>/MobilePhoneNumber}" class="adpFieldValue" />
+                                </VBox>
+
+                                <VBox class="adpField adpHalfField">
+                                    <Label text="E-Mail" class="adpFieldLabel" />
+                                    <Text text="{address>/EmailAddress}" wrapping="true" class="adpFieldValue" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </content>
+	</Popover>
+</core:FragmentDefinition>
