@@ -1,0 +1,119 @@
+
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table">
+                <Table id="salesOrderItemTableCreate" 
+                    items="{salesOrder>/to_Item}" 
+                    growing="true" 
+                    growingThreshold="20" 
+                    mode="SingleSelectLeft"
+                    itemPress="onItemPress" 
+                    alternateRowColors="true" 
+                    sticky="ColumnHeaders"
+                    itemActionCount="1"
+		            itemActionPress=".onItemDelete">
+                    <headerToolbar>
+                        <OverflowToolbar id="otbSubheader">
+                            <Title text="Products" level="H2" />
+                            <ToolbarSpacer />
+                            <Button id="btnAddItem" icon="sap-icon://add" type="Transparent" press=".onAddItem" tooltip="Add new material"/>
+                            <Button id="btDeleteItem" icon="sap-icon://delete" type="Transparent" press=".onDeleteItem" tooltip="Delete a material"/>
+                        </OverflowToolbar>
+				    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Label text="Item"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product Description"/>
+                        </Column>
+                        <Column>
+                            <Label text="Requested Quantity"/>
+                        </Column>
+                        <Column>
+                            <Label text="Confirmed Quantity"/>
+                        </Column>
+                        <Column>
+                            <Label text="Item Category"/>
+                        </Column>
+                        <Column>
+                            <Label text="Customer Material"/>
+                        </Column>
+                        <Column>
+                            <Label text="Net Value"/>
+                        </Column>
+                        <Column>
+                            <Label text="WBS Element"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem type="Navigation" visible="{= ${salesOrder>isDeleted} !== true }"> 
+                        	<!--<actions>
+					            <ListItemAction type="Delete" />
+				            </actions>-->
+                            <cells>
+                               <Text class="sapUiSmallMarginEnd" text="{path: 'salesOrder>SalesOrderItem', formatter: '.formatter.salesOrderItemDisplay'}"/>
+                               <Input 
+                                    showValueHelp="true" 
+                                    valueHelpRequest=".onProductVH" 
+                                    value="{salesOrder>Material}"
+                                    showSuggestion="true"
+                                    startSuggestion="2"
+                                    filterSuggests="false"
+                                    change=".onProductSelected"
+                                    suggest=".onProductSuggest"
+                                    suggestionItems="{
+                                        path: 'productVH>/C_SlsOrdProdBySlsOrgDistrChnl',
+                                        parameters: {
+                                            $select: 'SalesOrganization,DistributionChannel,Product,ProductName'
+                                        }
+                                    }">
+                                    <suggestionItems>
+                                        <core:ListItem
+                                            key="{productVH>Product}"
+                                            text="{productVH>Product}"
+                                            additionalText="{productVH>ProductName}" />
+                                    </suggestionItems>
+                                </Input>
+                               <Input value="{salesOrder>SalesOrderItemText}"/>
+                               <HBox>
+                                    <Input class="sapUiSmallMarginEnd" value="{salesOrder>RequestedQuantity}" change=".onItemQtyChange"/>
+                                    <Input showValueHelp="true" valueHelpRequest=".onUoMVH" value="{salesOrder>RequestedQuantityUnit}"/>
+                               </HBox>
+                               <Text text="{salesOrder>ConfdDelivQtyInOrderQtyUnit}"/>
+                               <Input class="sapUiSmallMarginEnd" showValueHelp="true" valueHelpRequest=".onItemCatVH" value="{salesOrder>SalesOrderItemCategory}"/>
+                               <Input showValueHelp="true" valueHelpRequest=".onCustMatVH" value="{salesOrder>MaterialByCustomer}"/>
+                               <HBox justifyContent="End">
+                                    <Text textAlign="End" text="{path: 'salesOrder>NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                                    <Text class="sapUiLargeMarginBegin" text="{salesOrder>TransactionCurrency}"/>
+                               </HBox>
+                               <Input 
+                                    showValueHelp="true" 
+                                    valueHelpRequest=".onWBSVH" 
+                                    value="{salesOrder>WBSElement}"
+                                    showSuggestion="true"
+                                    startSuggestion="2"
+                                    filterSuggests="false"
+                                    suggest=".onWBSSuggest"
+                                    suggestionItems="{
+                                        path: 'wbsElementVH>/ZC_WBSElementByExternalID',
+                                        parameters: {
+                                            $select: 'WBSElementExternalID,WBSDescription'
+                                        }
+                                    }">
+                                    <suggestionItems>
+                                        <core:ListItem
+                                            key="{wbsElementVH>WBSElementExternalID}"
+                                            text="{wbsElementVH>WBSElementExternalID}"
+                                            additionalText="{wbsElementVH>WBSDescription}" />
+                                    </suggestionItems>
+                                </Input>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+</core:FragmentDefinition>

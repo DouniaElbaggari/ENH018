@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog
+        id="itemPartnerTypeDialog"
+        title="Partner Type Selection"
+        contentWidth="32rem"
+        draggable="true"
+        resizable="false"
+        afterClose="">
+
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Label text="Partner Function" required="true" labelFor="itemPartnerTypeSelect" />
+
+                <Select
+                    id="itemPartnerTypeSelect"
+                    width="100%"
+                    selectedKey="{viewModel>/itemPartner}"
+                    items="{itemPartnerFunctionsVH>/C_PartnerFuncBySlsDocItemCatVH}"
+                    forceSelection="true"
+                    change="">
+                    <core:Item
+                        key="{itemPartnerFunctionsVH>PartnerFunction}"
+                        text="{itemPartnerFunctionsVH>PartnerFunctionName} ({itemPartnerFunctionsVH>PartnerFunction})" />
+                </Select>
+            </VBox>
+        </content>
+
+        <beginButton>
+            <Button
+                text="Create"
+                type="Emphasized"
+                press=".onCreateItemPartner" />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onCancelItemPartner" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

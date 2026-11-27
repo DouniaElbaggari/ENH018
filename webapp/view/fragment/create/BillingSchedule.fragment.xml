@@ -1,0 +1,247 @@
+<core:FragmentDefinition
+    controllerName="com.eiffage.sdt.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    
+
+    <Panel>
+    
+        <!--<HBox alignContent="Center">
+            <Label text="Calendrier de facturation"/>
+            <SegmentedButton selectedKey="Milestone" width="20em" selectedItem="sbMilestone" selectionChange=".onCalendarTypeChange">
+                <items>
+                    <SegmentedButtonItem id="sbMilestoneItem" key="Milestone" text="Jalon"/>
+                    <SegmentedButtonItem id="sbPeriodicItem"  key="Periodic" text="Periodique"  />
+                </items>
+            </SegmentedButton>
+        </HBox>
+        <HBox>
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+                maxContainerCols="3"
+                columnsM="3"
+                columnsL="3"
+                columnsXL="3"
+                labelSpanM="4"
+                labelSpanL="4"
+                labelSpanXL="4"
+                labelSpanS="12"
+                emptySpanM="0"
+                emptySpanL="0"
+                emptySpanXL="0"
+                emptySpanS="0"
+                adjustLabelSpan="false"
+                class="sapUiSmallMarginBottom">
+
+                <f:content>
+                    <Label text="Net Value" />
+                    <HBox >
+                    <Text text="{path: 'itemDetail>/NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false }}" />
+                    <Text text="{itemDetail>/TransactionCurrency}"/>
+                    </HBox>
+                </f:content>
+            </f:SimpleForm>
+
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+                maxContainerCols="6"
+                columnsM="6"
+                columnsL="6"
+                columnsXL="6"
+                labelSpanM="4"
+                labelSpanL="4"
+                labelSpanXL="4"
+                labelSpanS="12"
+                emptySpanM="0"
+                emptySpanL="0"
+                emptySpanXL="0"
+                emptySpanS="0"
+                adjustLabelSpan="false"
+                visible="{viewModel>/periodicCalendar}">
+
+                <f:content>
+                    <Label text="{i18n>salesOrderBillingPlan.startDate}" />
+                    <DatePicker value="{itemDetail>/to_BillingPlan/BillingPlanStartDate}"/>
+                    
+                    <Label text="{i18n>salesOrderBillingPlan.endDate}" />
+                    <DatePicker value="{itemDetail>/to_BillingPlan/BillingPlanEndDate}" />
+
+                    <Label text="Périodicité" />
+                    <Text text="Mensuelle" />
+                </f:content>
+            </f:SimpleForm>
+        </HBox>-->
+
+        <VBox class="billingCalendarSection sapUiSmallMarginBottom">
+    <!--<HBox
+        alignItems="Center"
+        justifyContent="SpaceBetween"
+        class="billingCalendarHeader sapUiSmallMarginBottom">
+
+        <Title
+            text="Calendrier de facturation"
+            level="H4"
+            class="sapUiTinyMarginEnd" />
+
+        <SegmentedButton
+            selectedKey="Milestone"
+            width="18rem"
+            selectionChange=".onCalendarTypeChange">
+            <items>
+                <SegmentedButtonItem
+                    id="sbMilestoneItem"
+                    key="Milestone"
+                    text="Jalon" />
+                <SegmentedButtonItem
+                    id="sbPeriodicItem"
+                    key="Periodic"
+                    text="Périodique" />
+            </items>
+        </SegmentedButton>
+    </HBox>-->
+
+    <HBox
+        wrap="Wrap"
+        alignItems="Start"
+        class="billingCalendarContent">
+
+        <VBox
+            width="15rem"
+            class="billingInfoCard sapUiSmallMarginEnd sapUiSmallMarginBottom">
+
+            <Label
+                text="Valeur nette"
+                class="billingInfoLabel" />
+
+            <ObjectNumber
+                number="{
+                    path: 'itemDetail>/NetAmount',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: {
+                        minFractionDigits: 2,
+                        maxFractionDigits: 2,
+                        preserveDecimals: false
+                    }
+                }"
+                unit="{itemDetail>/TransactionCurrency}"
+                emphasized="true"
+                class="billingNetAmount" />
+        </VBox>
+
+        <f:SimpleForm
+            editable="false"
+            layout="ResponsiveGridLayout"
+            width="auto"
+            maxContainerCols="3"
+            columnsM="3"
+            columnsL="3"
+            columnsXL="3"
+            labelSpanM="4"
+            labelSpanL="4"
+            labelSpanXL="4"
+            labelSpanS="12"
+            emptySpanM="0"
+            emptySpanL="0"
+            emptySpanXL="0"
+            emptySpanS="0"
+            adjustLabelSpan="false"
+            class="billingPeriodicForm"
+            visible="{viewModel>/periodicCalendar}">
+
+            <f:content>
+                <Label text="{i18n>salesOrderBillingPlan.billingPlanType}"/>
+                <Select id="selBillingPlanType" width="100%" selectedKey="{itemDetail>/to_BillingPlan/BillingPlanType}" items="{billingPlanTypeVH>/ZI_BillingPlanTypeVH}">
+                    <core:Item key="{billingPlanTypeVH>BillingPlanType}" text="{billingPlanTypeVH>BillingPlabTypeName} ({billingPlanTypeVH>BillingPlanType})"/>
+                </Select>
+                <Label text="{i18n>salesOrderBillingPlan.startDate}" />
+                <HBox >
+                    <DatePicker
+                        value="{itemDetail>/to_BillingPlan/BillingPlanStartDate}"
+                        editable="true"
+                        width="10rem" />
+                    <Input showValueHelp="true" value="{itemDetail>/to_BillingPlan/BillingPlanStartDateRule}" valueHelpRequest=""/>
+                </HBox>
+
+                <Label text="{i18n>salesOrderBillingPlan.endDate}" />
+                <HBox >
+                    <DatePicker
+                        value="{itemDetail>/to_BillingPlan/BillingPlanEndDate}"
+                        editable="true"
+                        width="10rem" />
+                    <Input showValueHelp="true" value="{itemDetail>/to_BillingPlan/BillingPlanStartDateRule}" valueHelpRequest=""/>
+                </HBox>
+                <!--<Label text="Périodicité" />
+                <ObjectStatus
+                    text="Mensuelle"
+                    state="Information" />-->
+                <Input showValueHelp="true" value="{itemDetail>/to_BillingPlan/BillingPlanStartDateRule}" valueHelpRequest=""/>
+            </f:content>
+        </f:SimpleForm>
+    </HBox>
+</VBox>
+        
+        <Table id="tableBillingScheduleCreate" items="{itemDetail>/to_BillingPlan/to_BillingPlanItem}" mode="SingleSelectLeft" itemActionCount="1" itemActionPress=".onBillingScheduleDelete">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <!--<Title text="{i18n>salesOrderItemText.table.title}" level="H2"/>-->
+                    <ToolbarSpacer/>
+                    <Button  id="btnAddBillingSchedule" icon="sap-icon://add" press=".onAddBillingSchedule"/>
+                    <Button  id="btnDeleteBillingSchedule" icon="sap-icon://delete" press=".onDeleteBillingSchedule"/>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Billing Date"/>
+                </Column>
+                <Column>
+                    <Text text="%"/>
+                </Column>
+                <Column>
+                    <Text text="Due Amount"/>
+                </Column>
+                <Column>
+                    <Text text="Currency"/>
+                </Column>
+                <Column>
+                    <Text text="Blocked"/>
+                </Column>
+                <Column>
+                    <Text text="Invoice Type"/>
+                </Column>
+                <Column>
+                    <Text text="Document Number"/>
+                </Column>
+                <Column>
+                    <Text text="Reference document number"/>
+                </Column>
+                <Column>
+                    <Text text="Processing status"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <DatePicker value="{itemDetail>BillingPlanBillingDate}" enabled="{= ${itemDetail>BillingPlanRelatedBillgStatus} !== 'C' }"/>
+                        <Text text="{path: 'itemDetail>BillingPlanAmountPercent', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                        <Text text="{path: 'itemDetail>BillingPlanAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                        <Text text="{itemDetail>TransactionCurrency}"/>
+                        <Input value="{itemDetail>BillingBlockReason}" enabled="{= ${itemDetail>BillingPlanRelatedBillgStatus} !== 'C' }"/>
+                        <!--<Text text="{itemDetail>BillingPlanType}"/>-->
+                        <Select selectedKey="{itemDetail>BillingPlanType}">
+                            <core:Item key="ZF2" text="Invoice (ZF2)"/>
+                            <core:Item key="ZFAZ" text="Advance Invoice (ZFAZ)"/>
+                        </Select>
+                        <Text text="{itemDetail>BillingDocument}"/>
+                        <Text text=""/>
+                        <Text text="{itemDetail>BillingPlanRelatedBillgStatus}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,92 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <VBox width="100%">
+
+        <!-- BASIC DATA -->
+        <!--<Title text="Basic Data" level="H3" class="sapUiSmallMarginBottom"/>-->
+
+        <HBox width="100%" alignItems="Start" renderType="Bare" class="sapUiMediumMarginBottom">
+            <!-- Left -->
+            <!--<VBox width="72%" class="sapUiSmallMarginEnd">-->
+                <form:SimpleForm id="basicDataSimpleFormItemCreate" editable="true" layout="ResponsiveGridLayout" title="Basic Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text="Item Data"/>
+                        <Label text="Item Category"/>
+                        <Text text="{itemDetail>/SalesOrderItemCategory}"/>
+
+                        <Label text="Customer Reference"/>
+                        <Text text="{itemDetail>/PurchaseOrderByCustomer}"/>
+
+                        <Label text="Customer Material"/>
+                        <Text text="{itemDetail>/MaterialByCustomer}"/>
+
+                        <core:Title text="Terms and Conditions"/>
+
+                        <Label text="Incoterms Version"/>
+                        <Text text="{itemDetail>/IncotermsVersion}"/>
+                        
+                        <Label text="Terms of Payment"/>
+                        <Text text="{itemDetail>/CustomerPaymentTerms}"/>
+                        
+                        <!--<core:Title text="Shipping"/>
+
+                        <Label text="Plant"/>
+                        <Text text="{itemDetail>/ShippingConditions}"/>
+
+                        <Label text="Storage Location"/>
+                        <Text text="{}"/>
+
+                        <Label text="Shipping Point"/>
+                        <Text text="{}"/>
+
+                        <Label text="Shipping Type"/>
+                        <Text text="{}"/>
+
+                        <Label text="Route"/>
+                        <Text text="{}"/>-->
+                    </form:content>
+                </form:SimpleForm>
+            <!--</VBox>-->
+        </HBox>
+
+        <!-- ADVANCED DATA -->
+        <!--<Title text="Advanced Data" level="H3" class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>-->
+
+        <form:SimpleForm id="advancedDataSimpleFormItemCreate" title="Advanced Data" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+
+            <form:content>
+                <core:Title text="Account Assignment"/>
+
+                <Label text="Profit Center"/>
+                <Text text="{itemDetail>/IncotermsVersion}"/>
+
+                <Label text="WBS Element"/>
+                <Text text="{itemDetail>/IncotermsLocation1}"/>
+
+                <core:Title text="Dates"/>
+
+                <Label text="Billing Date"/>
+                <Text text="{path: 'itemDetail>/BillingDocumentDate', formatter: '.formatter.formatDocumentDate' }"/>
+
+                <Label text="Pricing Date"/>
+                <Text text="{path: 'itemDetail>/PricingDate', formatter: '.formatter.formatDocumentDate'}"/>
+
+                <!--<core:Title text="Weight and Volume"/>
+
+                <Label text="Gross Weight"/>
+                <Text text="{itemDetail>/SalesOrganization}"/>
+
+                <Label text="Net Weight"/>
+                <Text text="{itemDetail>/SalesOffice}"/>
+
+                <Label text="Volume"/>
+                <Text text="{itemDetail>/DistributionChannel}"/>-->
+
+             </form:content>
+        </form:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>

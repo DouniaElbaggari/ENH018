@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Table 
+    id="tableTextCreate" 
+    items="{salesOrder>/to_Text}" 
+    mode="SingleSelectLeft" 
+    alternateRowColors="true" 
+    sticky="ColumnHeaders"
+    itemActionCount="1"
+		itemActionPress=".onTextDelete">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Sales Order Texts" level="H2"/>
+        <ToolbarSpacer/>
+        <Button  id="btnAddText" icon="sap-icon://add" press=".onAddText"/>
+        <Button  id="btnDeleteText" icon="sap-icon://delete" press=".onTextDelete"/>
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column>
+        <Text text="Text Type"/>
+      </Column>
+      <Column>
+        <Text text="Language"/>
+      </Column>
+      <Column>
+        <Text text="Text"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem visible="{= ${salesOrder>isDeleted} !== true }">
+        <!--<actions>
+				  <ListItemAction type="Delete" />
+			  </actions>-->
+        <cells>
+          <Select items="{textTypes>/textTypes}" selectedKey="{salesOrder>LongTextID}" forceSelection="false">
+            <core:Item key="{textTypes>LongTextID}" text="{textTypes>LongTextIDText} ({textTypes>LongTextID})"/>
+          </Select>
+          <Input showValueHelp="true" value="{salesOrder>Language}" valueHelpRequest=".onLanguageVH"/>
+          <TextArea value="{salesOrder>LongText}" rows="3" width="100%" growing="true" change=".onTextChange"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

@@ -1,0 +1,258 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <VBox class="sapUiResponsiveContentPadding" width="100%">
+
+        <!-- BASIC DATA -->
+        <Title text="" level="H3" class="sapUiSmallMarginBottom"/>
+
+        <HBox class="sapUiMediumMarginBottom">
+            <!-- Left -->
+            <VBox width="100%">
+                <form:SimpleForm id="basicDataSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Basic Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+
+                    <form:content>
+                        <core:Title text="Order Data"/>
+                        <Label text="Sold-to Party" required="true"/>
+                        <Input id="inSoldTo"
+                            value="{salesOrder>/SoldToParty}"
+                            showValueHelp="true"
+                            valueHelpRequest=".onSoldToVH"
+                            showSuggestion="true"
+                            startSuggestion="2"
+                            filterSuggests="false"
+                            suggest=".onSoldToSuggest"
+                            suggestionItems="{
+                                path: 'soldToVH>/C_SoldToSalesAreaVH',
+                                parameters: {
+                                    $select: 'Customer,CustomerName'
+                                }
+                            }">
+
+                            <suggestionItems>
+                                <core:ListItem
+                                    key="{soldToVH>Customer}"
+                                    text="{soldToVH>Customer}"
+                                    additionalText="{soldToVH>CustomerName}" />
+                            </suggestionItems>
+                        </Input>
+                        <Label text="Document Date"/>
+                        <DatePicker id="dpDocDate" value="{path: 'salesOrder>/BillingDocumentDate', type:'sap.ui.model.type.Date', formatOptions: {
+							style: 'medium',
+							strictParsing: true
+						}}"/>
+
+                        <!-- <Label text="Customer Group"/>
+                        <Input id="inCustGrp" value="{salesOrder>/salesOrderHeader/customerGroupName}" showValueHelp="true" valueHelpRequest=".onCustGrpVH"/> -->
+
+                        <core:Title text=" "/>
+
+                        <Label text="Customer Reference"/>
+                        <Input value="{salesOrder>/PurchaseOrderByCustomer}"/>
+
+                        <!--<Label text="{i18n>salesOrderHeader.orderData.progressStatus}"/>
+                        <Input value="{salesOrder>/OverallSDDocReferenceStatus}"/>-->
+
+                        <Label text="{i18n>salesOrderHeader.basicdata.CustRefDate}"/>
+                        <DatePicker id="dpCustRefDate" value="{path: 'salesOrder>/CustomerPurchaseOrderDate', type:'sap.ui.model.type.Date', formatOptions: {
+							style: 'medium',
+							strictParsing: true
+						}}"/>
+                        
+                        <Label text="Order Reason"/>
+                        <Select selectedKey="{salesOrder>/SDDocumentReason}" items="{orderReasonVH>/C_SlsDocAllowedOrderReasonVH}" forceSelection="false">
+                            <core:Item key="{orderReasonVH>SDDocumentReason}" text="{orderReasonVH>SDDocumentReasonText} ({orderReasonVH>SDDocumentReason})"/>
+                        </Select>
+
+                        <core:Title text=" "/>
+
+                        <!-- <Label text="Shipping Conditions"/>
+                        <Input value="{/ShippingConditions}" showValueHelp="true"/>
+
+                        <Label text="Requested Delivery Date"/>
+                        <DatePicker value="{/RequestedDeliveryDate}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd"/> -->
+                    </form:content>
+                </form:SimpleForm>
+            </VBox>
+
+            <!-- Right -->
+            <!--<VBox width="28%">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Title text="Ship-to Party Data" level="H5"/>
+                    <Link text="Change Ship-to Party Data"/>
+                </HBox>
+
+                <HBox justifyContent="End" class="sapUiTinyMarginTop sapUiTinyMarginBottom">
+                    <Link text="Show Details"/>
+                </HBox>
+
+                <form:SimpleForm id="shipToSimpleForm" editable="false" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
+
+                    <form:content>
+                        <Label text="Ship-to Party"/>
+                        <Text text="{salesOrder>/SoldToParty}"/>
+
+                        <Label text="Address"/>
+                        <Text text="{salesOrder>/ShipToAddress}"/>
+                    </form:content>
+                </form:SimpleForm>
+            </VBox>-->
+        </HBox>
+
+        <!-- ADVANCED DATA -->
+        <!--<Title text="Advanced Data" level="H3" class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+        <form:SimpleForm id="advancedDataSimpleForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+
+            <form:content>
+                <core:Title text="Terms and Conditions"/>
+
+                <Label text="Incoterms"/>
+                <Input value="{salesOrder>/Incoterms}" showValueHelp="true" valueHelpRequest=".onIncotermsVH"/>
+
+                <Label text="Incoterms Version"/>
+                <Input value="{salesOrder>/IncotermsVersion}"/>
+
+                <Label text="Incoterms Location 1"/>
+                <Input value="{salesOrder>/IncotermsLocation1}"/>
+
+                <Label text="Incoterms Location 2"/>
+                <Input value="{salesOrder>/IncotermsLocation2}"/>
+
+                <Label text="Terms of Payment"/>
+                <Input value="{salesOrder>/TermsOfPayment}"/>
+
+
+                <core:Title text="Pricing and Billing"/>
+
+                <Label text="Payment Method"/>
+                <Input value="{salesOrder>/PaymentMethod}"/>
+
+                <Label text="Pricing Date"/>
+                <DatePicker value="{salesOrder>/PricingDate}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd"/>
+
+                <Label text="Price List Type"/>
+                <Input value="{salesOrder>/PriceListType}" showValueHelp="true"/>
+
+                <Label text="Pricing Procedure"/>
+                <Text text="{salesOrder>/PricingProcedure}"/>
+
+                <Label text="Billing Date"/>
+                <DatePicker value="{salesOrder>/BillingDate}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd"/>
+
+                <Label text="Customer Price Group"/>
+                <Input value="{salesOrder>/CustomerPriceGroup}" showValueHelp="true"/>
+
+                <Label text="Serv. Rendered Date"/>
+                <DatePicker value="{salesOrder>/ServiceRenderedDate}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd"/>
+
+                <Label text="Document Currency"/>
+                <Input value="{salesOrder>/DocumentCurrency}"/>-->
+            <form:SimpleForm id="advancedDataSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Advanced Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+
+                <form:content>
+                    <core:Title text="Organizational Data"/>
+
+                    <Label text="Sales Organization"/>
+                    <Text text="{descriptions>/salesOrgDescription}" />
+
+                    <Label text="Distribution Channel"/>
+                    <Text text="{descriptions>/distChannelName}" />
+
+                    <Label text="Division"/>
+                    <Text text="{descriptions>/divisionName}"/>
+
+                    <core:Title text="Administrative Data"/>
+
+                    <Label text="Created By"/>
+                    <Text text="{salesOrder>/CreatedByUser}" />
+
+                    <Label text="Create4d On"/>
+                    <Text text="{path: 'salesOrder>/CreationDate', formatter: '.formatter.formatDocumentDate'}"/>
+
+                    <Label text="Last Changed By"/>
+                    <Text text="" />
+
+                    <Label text="Last Changed On"/>
+                    <Text text="{path: 'salesOrder>/LastChangeDate', formatter: '.formatter.formatDocumentDate'}"/>
+            </form:content>
+        </form:SimpleForm>
+
+        <!--<HBox justifyContent="End" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+            <Link text="Show More"/>
+        </HBox>-->
+
+        <!-- PARTNERS -->
+        <Title text="Partners" level="H4" class="sapUiMediumMarginTop sapUiSmallMarginBottom"/>
+
+        <!--<HBox justifyContent="End" class="sapUiTinyMarginBottom">
+            <Button text="Create" type="Transparent"/>
+            <Button text="Change Address" type="Transparent"/>
+            <Button text="Delete" type="Transparent"/>
+            <Button icon="sap-icon://copy" type="Transparent"/>
+        </HBox>-->
+
+        <!--<Table id="partnersTable" items="{salesOrder>/to_Partner}" width="100%" mode="SingleSelectLeft">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button text="Create" type="Transparent" press=".onAddPartner"/>
+                    <Button text="Delete" type="Transparent" press=".onDeletePartner"/>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column width="10rem">
+                    <Label text="Partner Function"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Partner"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Address"/>
+                </Column>
+                <Column width="12rem"/>
+            </columns>
+
+            <items>
+                <ColumnListItem visible="{= ${salesOrder>isDeleted} !== true }">
+                    <cells>
+                        <Text text="{salesOrder>PartnerFunction}"/>
+                        <Input value="{salesOrder>Customer}" showValueHelp="true" valueHelpRequest=".onPartnerVH"/>
+                        <Text text="{salesOrder>to_Address/StreetName}, {salesOrder>to_Address/PostalCode}, {salesOrder>to_Address/CityName}, {salesOrder>to_Address/Country}"/>
+                        <Link text="Details" press=".onBPAddressDetailPress"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>-->
+        <Table id="partnersTable" items="{salesOrder>/to_Partner}" width="100%">
+            <columns>
+                <Column width="10rem">
+                    <Label text="Partner Function"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Partner"/>
+                </Column>
+                <Column width="16rem">
+                    <Label text="Address"/>
+                </Column>
+                <Column width="12rem">
+                    
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{salesOrder>PartnerFunction}"/>
+                        <Text text="{salesOrder>to_Address/FullName} ({salesOrder>Customer})"/>
+                        <Text text="{salesOrder>to_Address/StreetName}, {salesOrder>to_Address/PostalCode}, {salesOrder>to_Address/CityName}, {salesOrder>to_Address/Country}"/>
+                        <Link text="Details" press=".onBPAddressDetailPress"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table">
+    <VBox class="sapUiResponsiveContentPadding" width="100%">
+    <form:SimpleForm id="billingDataSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Billing" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text=""/>
+                        <Label text="Fixed Value Date"/>
+                        <DatePicker id="dpFixedValueDate" value="{path: 'itemDetail>/FixedValueDate', type:'sap.ui.model.type.Date', formatOptions: {
+							style: 'medium',
+							strictParsing: true
+						}}"/>
+                        <Label text="Billing Date"/>
+                        <DatePicker id="dpBillingDoc" value="{path: 'itemDetail>/BillingDocumentDate', type:'sap.ui.model.type.Date', formatOptions: {
+							style: 'medium',
+							strictParsing: true
+						}}"/>
+                    </form:content>
+                </form:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>
