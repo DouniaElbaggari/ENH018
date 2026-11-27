@@ -1,0 +1,13 @@
+<core:FragmentDefinition 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:vh="sap.ui.comp.valuehelpdialog">
+    <vh:ValueHelpDialog id="productValueHelpDialog">
+        <vh:filterBar>
+            <filterbar:FilterBar id="productFilterBar" advancedMode="true" isRunningInValueHelpDialog="true" />
+        </vh:filterBar>
+    </vh:ValueHelpDialog>
+</core:FragmentDefinition>
