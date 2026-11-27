@@ -1,0 +1,184 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.Invoice"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage
+        id="pageProgressInvoice"
+        headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Create Progress Invoice" />
+                </f:heading>
+                
+                <f:actions>
+                    <HBox>
+                        <Button
+                            text="Invoice"
+                            type="Ghost"
+                            press=".onInvoice"/>
+                        <Button
+                            text="Pro Forma"
+                            type="Ghost"
+                            press=".onProForma"/>
+                        <Button
+                            text="Preview"
+                            type="Ghost"
+                            press=".onPreview"/>
+                        </HBox>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <VBox class="sapUiResponsiveContentPadding">
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.ItemAmounts" type="XML"/>
+        
+                <Panel headerText="Progress Billing" expandable="true">
+                    <l:Grid
+                        defaultSpan="XL12 L12 M12 S12"
+                        hSpacing="1"
+                        vSpacing="0"
+                        class="sapUiSmallMargin">
+
+                        <Label
+                            text="Global percentage to be invoiced"
+                            labelFor="inPercentage"
+                            textAlign="Center">
+                            <layoutData>
+                                <l:GridData span="XL2 L2 M12 S12" />
+                            </layoutData>
+                        </Label>
+
+                        <Input
+                            id="inPercentage"
+                            type="Number"
+                            width="100%">
+                            <layoutData>
+                                <l:GridData span="XL2 L3 M6 S12" />
+                            </layoutData>
+                        </Input>
+
+                        <Button
+                            text="Validate"
+                            press=".onValidate">
+                            <layoutData>
+                                <l:GridData span="XL2 L2 M6 S12" />
+                            </layoutData>
+                        </Button>
+
+                    </l:Grid>
+                </Panel>
+                <Panel headerText="Invoice Header" expandable="true">
+                    <form:SimpleForm
+                        id="priceForm"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        adjustLabelSpan="false"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        emptySpanXL="0"
+                        emptySpanL="4"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false">
+
+                        <form:content>
+                            <core:Title text=""/>
+                            <Label text="Révision de prix" />
+                            <Input value="{revisionPrix}"/>
+                            <Input>
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                            </Input>
+                           
+                            <Label text="Prorata" />
+                            <Input value="{revisionUnite}"  />
+                            <Input value="%" editable="false">
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                            </Input>
+                    
+                             <core:Title text="" />                     
+                            <Label text="Majoration" />
+                            <Input value="{majoration}"/>
+                            <Input>
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                            </Input>
+                
+                           
+                            <Label text="Remise" />
+                            <Input value="{remiseUnite}"/>
+                            <Input>
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                            </Input>
+                        </form:content>
+                    </form:SimpleForm>
+                </Panel>
+
+                <Panel headerText="Invoice Item" expandable="true">
+                    <Table  id="tableInvoiceItems" items="" mode="None" >
+                        <columns>
+                            <Column>
+                                <Text text="Item"/>
+                            </Column>
+                            <Column>
+                                <Text text="Product"/>
+                            </Column>
+                            <Column>
+                                <Text text="Amount to be Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Rate"/>
+                            </Column>
+                            <Column>
+                                <Text text="Quantity Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Due Date"/>
+                            </Column>
+                            <Column>
+                                <Text text="Payment Amount"/>
+                            </Column>
+                            <Column>
+                                <Text text="To be Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Price Revision"/>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+            </VBox>
+        </f:content>
+        <!--<f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button type="Transparent" text="Invoice" press=".onInvoice"/>
+                <Button type="Transparent" text="Pro Forma" press=".onProForma"/>
+                <Button type="Transparent" text="Preview" press=".onPreview"/>
+            </OverflowToolbar>
+        </f:footer>-->
+    </f:DynamicPage>
+</mvc:View>

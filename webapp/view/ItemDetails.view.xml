@@ -1,0 +1,214 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.ItemDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage
+        id="pageSalesOrderItems"
+        headerExpanded="true">
+        <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+            <Title
+              text="{= ${itemDetail>/SalesOrder} + ' /'}"
+              level="H2" />
+            <Title
+              text="{itemDetail>/SalesOrderItemText}"
+              level="H1" />
+            <ObjectIdentifier
+              title="{itemDetail>/Material}" />
+          </VBox>
+        </f:heading>
+
+        <f:actions>
+          <!--<Button
+            text="Update Prices"
+            type="Emphasized"
+            press=".onUpdatePrices" />-->
+
+          <MenuButton
+            text="Billing Block"
+            buttonMode="Regular"
+            useDefaultActionOnly="false">
+            <menu>
+              <Menu itemSelected=".onBillingBlockSelect">
+                <MenuItem key="addBillingBlock" text="Set Billing Block" enabled="{= ${itemDetail>/ItemBillingBlockReason} === ''}"/>
+                <MenuItem key="removeBillingBlock" text="Remove Billing Block" enabled="{= ${itemDetail>/ItemBillingBlockReason} !== ''}"/>
+              </Menu>
+            </menu>
+          </MenuButton>
+
+          <MenuButton
+            text="Rejection Reason"
+            buttonMode="Regular"
+            useDefaultActionOnly="false">
+            <menu>
+              <Menu itemSelected=".onRejectionReasonSelect">
+                <MenuItem key="addRejectionReason" text="Reject Item" enabled="{= ${itemDetail>/SalesDocumentRjcnReason} === ''}"/>
+                <MenuItem key="removeRejectionReason" text="Remove Rejection" enabled="{= ${itemDetail>/SalesDocumentRjcnReason} !== ''}"/>
+              </Menu>
+            </menu>
+          </MenuButton>
+        </f:actions>
+      </f:DynamicPageTitle>
+    </f:title>
+
+    <f:header>
+    
+      <f:DynamicPageHeader pinnable="true">
+        <HBox
+          wrap="Wrap"
+          renderType="Bare"
+          class="sapUiMediumMarginTop sapUiMediumMarginBottom">
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom">
+            <Title text="Item" />
+            <Title
+              text="{itemDetail>/SalesOrderItem}"
+              level="H2"
+              class="itemNumberLarge" />
+          </VBox>
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom" width="20rem">
+            <Title text="Status" />
+            <ObjectStatus
+              title="Overall Status"
+              text="{itemDetail>/OverallSDDocReferenceStatus}" />
+            <!--<ObjectStatus
+              title="Delivery Status"
+              text="{itemDetail>/DeliveryStatusState}" />-->
+            <ObjectStatus
+              title="Incompletion Status"
+              text="{itemDetail>/IncompletionStatusState}" />
+            <!--<ObjectStatus
+              title="Rejection Status"
+              text="{= ${itemDetail>/SalesDocumentRjcnReason} ? 'Rejected' : 'Not Rejected' }"
+              state="{= ${itemDetail>/SalesDocumentRjcnReason} ? 'Error' : 'Success' }"  />-->
+          </VBox>
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom" width="18rem">
+            <Title text="Block Status" />
+            <!--<ObjectStatus
+              title="Delivery Block Status"
+              text="{itemDetail>/DeliveryBlockStatusText}"
+              state="{itemDetail>/DeliveryBlockStatusState}" />-->
+            <ObjectStatus
+              title="Billing Block Status"
+              text="{= ${itemDetail>/ItemBillingBlockReason} ? 'Blocked' : 'Not blocked' }" 
+              state="{= ${itemDetail>/ItemBillingBlockReason} ? 'Error' : 'Success' }"  />
+          </VBox>
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom">
+            <Title text="Requested Quantity" />
+            <ObjectNumber
+              class="sapMObjectNumberLarge"
+              number="{itemDetail>/RequestedQuantity}"
+              unit="{itemDetail>/RequestedQuantityUnit}" />
+          </VBox>
+
+          <VBox class="sapUiMediumMarginBottom">
+            <Title text="Net Value" />
+            <ObjectNumber
+                class="sapMObjectNumberLarge"
+                number="{
+                    path: 'itemDetail>/NetAmount',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: {
+                        groupingEnabled: true,
+                        groupingSize: 3,
+                        groupingSeparator: '.',
+                        decimalSeparator: ',',
+                        minFractionDigits: 2,
+                        maxFractionDigits: 2
+                    }
+                }"
+                unit="{itemDetail>/TransactionCurrency}"
+                emphasized="false"
+                state="Information" />
+          </VBox>
+        </HBox>
+      </f:DynamicPageHeader>
+    </f:header>
+    <f:content>
+            <VBox>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.ItemAmounts" type="XML"/>
+                <IconTabBar
+                    id="idTabBarItemDetails"
+                    headerMode="Inline"
+                    expanded="{device>/isNoPhone}"
+                    applyContentPadding="false">
+                    <items>
+                        <IconTabFilter
+                            text="General Information"
+                            key="genInfoItem"
+                            id="genInfoItem">
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Billing Document"
+                            key="billingDocument"
+                            id="billingDocument">
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Prices"
+                            key="itemPrices"
+                            id="itemPrices">
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Partners"
+                            key="itemPartners"
+                            id="itemPartners">
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Texts"
+                            key="itemTexts"
+                            id="itemTexts">
+                        </IconTabFilter>
+                        <!--<IconTabFilter
+                            text="Status and Blocks"
+                            key="itemStatusAndBlocks"
+                            id="itemStatusAndBlocks">
+                            <core:Fragment
+                                    fragmentName="com.eiffage.sdt.view.fragment.display.StatusAndBlock"
+                                    type="XML"/>
+                        </IconTabFilter>-->
+                        <IconTabFilter
+                            text="Billing Schedule"
+                            key="billingschedule"
+                            id="billingSchedule">
+                            <!--<core:Fragment
+                                    fragmentName="com.eiffage.sdt.view.fragment.display.BillingSchedule"
+                                    type="XML"/>-->
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+              <Button
+                    id="btnItemMessages"
+                    icon="sap-icon://message-popup"
+                    press="onOpenMessages">
+                    <customData>
+                        <BadgeCustomData
+                            key="badge"
+                            value="{= String((%{appMessages>/messages} || []).length) }" />
+                    </customData>
+              </Button>
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    text="{i18n>apply}"
+                    press=".onApply"/>
+                <Button
+                    type="Transparent"
+                    text="Cancel"
+                    press=".onCancel"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+    </mvc:View>

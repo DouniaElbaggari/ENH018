@@ -1,0 +1,260 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.InvoiceByItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:form="sap.ui.layout.form">
+    <f:DynamicPage
+        id="pageItemInvoice"
+        headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Create Item Invoice" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <VBox class="sapUiResponsiveContentPadding">
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.ItemInvoiceAmounts" type="XML"/>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.RetentionInvoice" type="XML"/>
+        
+                <!--<Panel headerText="Item Billing" expandable="true">
+                    <l:Grid
+                        defaultSpan="XL12 L12 M12 S12"
+                        hSpacing="1"
+                        vSpacing="0"
+                        class="sapUiSmallMargin">
+
+                        <Label
+                            text="Global percentage to be invoiced"
+                            labelFor="inPercentage"
+                            textAlign="Center">
+                            <layoutData>
+                                <l:GridData span="XL2 L2 M12 S12" />
+                            </layoutData>
+                        </Label>
+
+                        <Input
+                            id="inPercentage"
+                            type="Number"
+                            width="100%">
+                            <layoutData>
+                                <l:GridData span="XL2 L3 M6 S12" />
+                            </layoutData>
+                        </Input>
+
+                        <Button
+                            text="Validate"
+                            press=".onValidate">
+                            <layoutData>
+                                <l:GridData span="XL2 L2 M6 S12" />
+                            </layoutData>
+                        </Button>
+
+                    </l:Grid>
+                </Panel>-->
+                <Panel headerText="Itemized Billing" expandable="true" expanded="true">
+                    <Table id="tableSOItems" items="{salesOrder>/to_Item}"  mode="MultiSelect" selectionChange=".onRowSelectionChange">
+                        <columns>
+                            <Column>
+                                <Text text="Item"/>
+                            </Column>
+                            <Column>
+                                <Text text="Product"/>
+                            </Column>
+                            <Column>
+                                <Text text="Description"/>
+                            </Column>
+                            <Column>
+                                <Text text="Amount"/>
+                            </Column>
+                            <Column>
+                                <Text text="Requested Quantity"/>
+                            </Column>
+                            <Column>
+                                <Text text="Remaining Balance"/>
+                            </Column>
+                            <Column>
+                                <Text text="Quantity Left to Invoice"/>
+                            </Column>
+                            <Column>
+                                <Text text="VAT"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <Text text="{salesOrder>SalesOrderItem}"/>
+                                <Text text="{salesOrder>Material}"/>
+                                <Text text="{salesOrder>SalesOrderItemText}"/>
+                                <Text text="{path: 'salesOrder>NetAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                                <Text text="{path: 'salesOrder>RequestedQuantity', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                                <Text text="{path: 'salesOrder>Balance', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                                <Text text="{salesOrder>QtyBalance}"/>
+                                <Text text="{path: 'salesOrder>TaxAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}" />
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+                <Panel headerText="Invoice Header" expandable="true" expanded="true">
+                    <form:SimpleForm
+                        id="formItemPrixce"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        adjustLabelSpan="false"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        emptySpanXL="0"
+                        emptySpanL="4"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false">
+                        <form:content>
+                            <core:Title text=""/>
+                            <Label text="Révision de prix" />
+                            <Input id="inRevPrix" change=".onPriceRevision" type="Number">
+                                <layoutData>
+                                    <l:GridData span="XL4 L3 M4 S8" />
+                                </layoutData>
+                            </Input>
+                            <SegmentedButton selectedKey="AMOUNT" id="sbPriceRevision">
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                                <items>
+                                    <SegmentedButtonItem key="AMOUNT" text="€" />
+                                    <SegmentedButtonItem key="PERCENT" text="%" />
+                                </items>
+                            </SegmentedButton>
+                            <Label text="Prorata" />
+                            <Input id="inProRata" change=".onProRata" type="Number">
+                                <layoutData>
+                                    <l:GridData span="XL4 L3 M4 S8" />
+                                </layoutData>
+                            </Input>
+                            <Text text="%" width="20%">
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                            </Text>
+                            <core:Title text="" />
+                            <Label text="Majoration" />
+                            <Input id="inMajoration" change=".onMajoration" type="Number"> 
+                                <layoutData>
+                                    <l:GridData span="XL4 L3 M4 S8" />
+                                </layoutData>
+                            </Input>
+                            <SegmentedButton selectedKey="AMOUNT" id="sbMajoration">
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                                <items>
+                                    <SegmentedButtonItem key="AMOUNT" text="€" />
+                                    <SegmentedButtonItem key="PERCENT" text="%" />
+                                </items>
+                            </SegmentedButton>
+                            <Label text="Remise" />
+                            <Input id="inRemise" change=".onRemise" type="Number">
+                                <layoutData>
+                                    <l:GridData span="XL4 L3 M4 S8" />
+                                </layoutData>
+                            </Input>
+                            <SegmentedButton selectedKey="AMOUNT" id="sbRemise">
+                            	<layoutData>
+						            <l:GridData span="XL2 L1 M3 S4" />
+					            </layoutData>
+                                <items>
+                                    <SegmentedButtonItem key="AMOUNT" text="€" />
+                                    <SegmentedButtonItem key="PERCENT" text="%" />
+                                </items>
+                            </SegmentedButton>
+                            <Button icon="sap-icon://simulate" tooltip="Calculate conditions" press=".onCalculateConditions"/>
+                        </form:content>
+                    </form:SimpleForm>
+                </Panel>
+
+                <Panel headerText="Invoice to be Created" expandable="true" expanded="true">
+                    <Table  id="tableInvoiceItemss" items="{invoiceItem>/items}" mode="None" >
+                        <columns>
+                            <Column>
+                                <Text text="Item"/>
+                            </Column>
+                            <Column>
+                                <Text text="Product"/>
+                            </Column>
+                            <Column>
+                                <Text text="Description"/>
+                            </Column>
+                            <Column>
+                                <Text text="Amount to be Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Quantity to be Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Rate"/>
+                            </Column>
+                            <Column>
+                                <Text text="Amount Due"/>
+                            </Column>
+                            <Column>
+                                <Text text="To be Invoiced"/>
+                            </Column>
+                            <Column>
+                                <Text text="Price Revision"/>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <Text text="{invoiceItem>SalesOrderItem}"/>
+                                <Text text="{invoiceItem>Material}"/>
+                                <Text text="{invoiceItem>SalesOrderItemText}"/>
+                                <Input value="{invoiceItem>InvoiceAmount}" type="Number" change=".onAmountChange" enabled="{= parseFloat(${invoiceItem>RequestedQuantity}) === 1 }"/>
+                                <Input value="{invoiceItem>InvoiceQuantity}" type="Number" change=".onQuantityChange" enabled="{= ${invoiceItem>RequestedQuantity} > 1 }"/>
+                                <Text text="{invoiceItem>Rate}"/>
+                                <Text text="{path: 'invoiceItem>Balance', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                                <Text text="{invoiceItem>QtyBalance}"/>
+                                <HBox alignItems="Center">
+                                    <Input value="{invoiceItem>PriceRevision}" type="Number"/>
+                                    <SegmentedButton selectedKey="AMOUNT" id="sbItemRemise" width="5rem">
+                                        <layoutData>
+                                            <FlexItemData shrinkFactor="0" />
+                                        </layoutData>
+                                        <items>
+                                            <SegmentedButtonItem key="AMOUNT" text="€" />
+                                            <SegmentedButtonItem key="PERCENT" text="%" />
+                                        </items>
+                                    </SegmentedButton>
+                                </HBox>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Button
+                        id="messagePopoverButton"
+                        icon="sap-icon://message-popup"
+                        text="{= ${appMessages>/messages}.length }"
+                        press=".onShowMessages"
+                        visible="{= ${appMessages>/messages}.length > 0 }" 
+                        type="Reject"/>   
+                <ToolbarSpacer />
+                <Button type="Transparent" text="Preview Invoice" press=".onInvoice"/>
+                <!--<Button type="Transparent" text="Pro Forma" press=".onProForma"/>-->
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

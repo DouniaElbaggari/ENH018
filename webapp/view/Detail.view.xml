@@ -1,0 +1,196 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <f:DynamicPage id="detailPage" headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                   <Title text="{= ${viewModel>/mode} === 'Create' ? 'Create Sales Order' : 'Sales Order ' + ${viewModel>/salesOrder} }" />
+                </f:heading>
+                <f:actions>
+                    <Button
+                        text="Edit"
+                        type="Emphasized"
+                        press=".onEdit"
+                        enabled="{= ${viewModel>/mode} === 'Display' }" />
+
+                    <Button
+                        icon="sap-icon://receipt"
+                        type="Ghost"
+                        press=".onDeclareCreance"
+                        enabled="{= ${viewModel>/mode} === 'Edit' }"
+                        tooltip="Déclaration de créance" 
+                        visible="{viewModel>/isBelgium}"/>
+
+                    <Button
+                        id="attachmentsButton"
+                        text="Attachments"
+                        press=".onOpenAttachments" 
+                        enabled="{= ${viewModel>/mode} === 'Edit' }"/>
+
+                    <MenuButton text="Facturation">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="Low" />
+                        </layoutData>
+
+                        <menu>
+                            <Menu itemSelected=".onMenuItemSelected">
+                                <MenuItem
+                                    text="Creer facture (par poste(s))"
+                                    icon="sap-icon://edit"
+                                    press=".createItemInvoice"
+                                    enabled="{viewModel>/isSigned}" />
+
+                                <MenuItem
+                                    text="Creer/facturer Demande d'avance"
+                                    icon="sap-icon://edit"
+                                    press=".onCreateAdvanceInvoice"
+                                    enabled="true" />
+                            </Menu>
+                        </menu>
+                    </MenuButton>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+           <f:DynamicPageHeader pinnable="true">
+        <HBox
+          wrap="Wrap"
+          renderType="Bare"
+          class="sapUiMediumMarginTop sapUiMediumMarginBottom">
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom">
+            <Title text="Sales Order Type" />
+            <Title
+              text="{salesOrder>/SalesOrderType}"
+              level="H2"/>
+          </VBox>
+
+          <VBox class="sapUiLargeMarginEnd sapUiMediumMarginBottom" width="20rem">
+            <Title text="Status" />
+            <ObjectStatus
+              title="Overall Status"
+              text="{ path: 'salesOrder>/OverallSDProcessStatus', formatter: '.formatter.getOverallSDProcessingStatus'}" />
+              <ObjectStatus
+              title="Overall Block Status"
+              text="{= ${salesOrder>/TotalBlockStatus} ? 'Rejected' : 'Not Rejected' }"
+              state="{= ${salesOrder>/TotalBlockStatus} ? 'Error' : 'Success' }"  />
+            <ObjectStatus
+              title="Incompletion Status"
+              text="{salesOrder>/IncompletionStatusState}" />
+          </VBox>
+
+          <VBox class="sapUiMediumMarginBottom">
+            <Title text="Net Value" />
+            <ObjectNumber
+                class="sapMObjectNumberLarge"
+                number="{
+                    path: 'salesOrder>/TotalNetAmount',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: {
+                        groupingEnabled: true,
+                        groupingSize: 3,
+                        groupingSeparator: '.',
+                        decimalSeparator: ',',
+                        minFractionDigits: 2,
+                        maxFractionDigits: 2
+                    }
+                }"
+                unit="{salesOrder>/TransactionCurrency}"
+                emphasized="false"
+                state="Information" />
+          </VBox>
+        </HBox>
+      </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <!--<VBox class="sapUiResponsiveContentPadding">-->
+                <VBox>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.Amounts" type="XML"/>
+                <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.Retention" type="XML"/>
+                
+                <IconTabBar
+                    id="idTabBarSalesOrderCreate"
+                    headerMode="Inline"
+                    expanded="{device>/isNoPhone}"
+                    applyContentPadding="false"
+                    select=".onItemBarSelected">
+                    <items>
+                        <IconTabFilter
+                            text="General Information"
+                            key="genInfo"
+                            id="genInfo">
+                            <content>
+                            <!--<core:Fragment
+                                fragmentName="com.eiffage.sdt.view.fragment.GeneralInformation"
+                                type="XML"/>-->
+                            </content>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Items"
+                            key="items"
+                            id="items">
+                            <!--<core:Fragment
+                                    fragmentName="com.eiffage.sdt.view.fragment.create.SalesOrderItem"
+                                    type="XML"/>-->
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Prices"
+                            key="prices"
+                            id="prices">
+                            <!--<core:Fragment
+                                    fragmentName="com.eiffage.sdt.view.fragment.PriceElementsTable"
+                                    type="XML"/>-->
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Texts"
+                            key="texts"
+                            id="texts">
+                            <!--<core:Fragment
+                                    fragmentName="com.eiffage.sdt.view.fragment.create.TextTable"
+                                    type="XML"/>-->
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Status and Blocks"
+                            key="statusandblocks"
+                            id="statusandblocks">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.StatusAndBlock" type="XML"/>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Button
+                    id="btnMessages"
+                    icon="sap-icon://message-popup"
+                    press="onOpenMessages">
+                    <customData>
+                        <BadgeCustomData
+                            key="badge"
+                            value="{= String((%{appMessages>/messages} || []).length) }" />
+                    </customData>
+                </Button>
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    text="{= ${viewModel>/mode} === 'Edit' ? ${i18n>save} : ${viewModel>/mode} === 'Create' ? ${i18n>create} : '' }"
+                    press=".onSave"/>
+                <Button
+                    type="Transparent"
+                    text="Cancel"
+                    press=".onCancel"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

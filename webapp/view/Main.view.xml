@@ -1,0 +1,62 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:mdc="sap.ui.mdc"
+    xmlns:svm="sap.ui.comp.smartvariants"
+>
+    <f:DynamicPage
+        id="salesOrders" headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    
+                </f:heading>
+                <f:actions>
+                    <!--<SegmentedButton
+                        id="documentTypeSwitch"
+                        selectedKey="salesOrders"
+                        selectionChange=".onDocumentTypeChange"
+                        width="20em">
+                        <items>
+                            <SegmentedButtonItem
+                                key="salesOrders"
+                                text="Sales Orders" />
+                            <SegmentedButtonItem
+                                key="salesContracts"
+                                text="Sales Contracts" />
+                        </items>
+                    </SegmentedButton>-->
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <VBox visible="{viewModel>/isSalesOrder}">
+                        <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.SalesOrderFilters" type="XML"/>
+                    </VBox>
+
+                    <VBox visible="{viewModel>/isSalesContract}">
+                        <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.contract.SalesContractFilters" type="XML"/>
+                    </VBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox>
+                <VBox visible="{viewModel>/isSalesOrder}">
+                    <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.SalesOrders" type="XML"/>
+                </VBox>
+
+                <VBox visible="{viewModel>/isSalesContract}">
+                    <core:Fragment fragmentName="com.eiffage.sdt.view.fragment.contract.SalesContracts" type="XML"/>
+                </VBox>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
