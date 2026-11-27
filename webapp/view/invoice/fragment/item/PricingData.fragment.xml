@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+                <form:SimpleForm  editable="true" layout="ResponsiveGridLayout" title="Pricing Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text=""/>
+                        <Label text="Pricing Date"/>
+                        <Text text="{path: 'billingDocItemDetail>/PricingDate', formatter: '.formatter.formatDocumentDate'}"/>
+                        
+                        <Label text="Pricing Date"/>
+                        <Text text=""/>
+                        
+                        <core:Title text=""/>
+                        
+                        <Label text="Commission Group"/>
+                        <Text text=""/>
+
+                        <core:Title text=""/>
+
+                        <Label text="Net Value"/>
+                        <HBox alignItems="End">
+                            <Text text="{path: 'billingDocItemDetail>/InvoiceAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                            <Text class="sapUiLargeMarginBegin" text=""/>
+                        </HBox>
+                        
+                        <Label text="Tax Amount"/>
+                        <HBox alignItems="End">
+                            <Text text="{path: 'billingDocItemDetail>/InvoiceTaxAmount', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2,maxFractionDigits: 2,preserveDecimals: false}}"/>
+                            <Text class="sapUiLargeMarginBegin" text=""/>
+                        </HBox>
+                    </form:content>
+                </form:SimpleForm>
+</core:FragmentDefinition>

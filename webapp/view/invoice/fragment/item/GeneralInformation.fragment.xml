@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+        <HBox width="100%" alignItems="Start" renderType="Bare">
+                <form:SimpleForm  editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <core:Title text="Item Data"/>
+                        <Label text="Product"/>
+                        <Text text="{billingDocItemDetail>/Material}"/>
+
+                        <Label text="Invoiced Quantity"/>
+                        <Text text="{billingDocItemDetail>/InvoiceQuantity}"/>
+
+                        <core:Title text="Reference Document Data"/>
+                        <Label text="Sales Doc. Category"/>
+                        <Text text="{billingDocItemDetail>/SalesOrderType}"/>
+
+                        <Label text="Sales Document"/>
+                        <Text text="{billingDocItemDetail>/SalesOrder}"/>
+
+                        <Label text="Sales Document Item"/>
+                        <Text text="{billingDocItemDetail>/SalesOrderItem}"/>
+                        
+                        <Label text="Sales Doc. Item Cat."/>
+                        <Text text="{billingDocItemDetail>/SalesOrderItemCategory}"/>
+                           
+                        <Label text="Ref. Doc. Category"/>
+                        <Text text="{billingDocItemDetail>/SalesOrderType}"/>
+
+                        <Label text="Reference Document"/>
+                        <Text text="{billingDocItemDetail>/SalesOrder}"/>
+
+                        <Label text="Reference Item"/>
+                        <Text text="{billingDocItemDetail>/SalesOrderItem}"/>
+
+                        <core:Title text="Additional Data"/>
+
+                        <Label text="Plant"/>
+                        <Text text="{billingDocItemDetail>/ProductionPlant}"/>
+
+                        <Label text="Division"/>
+                        <Text text="{billingDocItemDetail>/Division}"/>
+
+                        <Label text="Billing Rule"/>
+                        <Text text=""/>
+                    </form:content>
+                </form:SimpleForm>
+        </HBox>
+</core:FragmentDefinition>

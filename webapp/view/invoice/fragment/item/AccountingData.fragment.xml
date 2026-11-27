@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+                <form:SimpleForm  editable="true" layout="ResponsiveGridLayout" title="Accounting Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+                    <form:content>
+                        <Label text="Business Area"/>
+                        <Text text=""/>
+
+                        <Label text="Profit Center"/>
+                        <Text text="{billingDocItemDetail>/ProfitCenter}"/>
+
+                        <Label text="WBS Element"/>
+                        <Text text="{billingDocItemDetail>/WBSElement}"/>
+                    </form:content>
+                </form:SimpleForm>
+</core:FragmentDefinition>
