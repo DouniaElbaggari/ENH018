@@ -1,0 +1,40 @@
+<mvc:View
+    controllerName="com.eiffage.sdt.controller.invoice.Advance"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+    <f:DynamicPage id="advancePage" headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                   <Title text="{i18n>advanceInvoice.create.page.title}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <!--<Button
+                    id="btnMessages"
+                    icon="sap-icon://message-popup"
+                    press="onOpenMessages"
+                />-->
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    text="{i18n>advanceInvoice.create.buttons.save}"
+                    press=".onSave"/>
+                <Button
+                    type="Transparent"
+                    text="Cancel"
+                    press=".onCancel"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+
+</mvc:View>
