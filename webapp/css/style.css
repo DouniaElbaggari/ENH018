@@ -1,0 +1,297 @@
+.invoicePanel {
+  border-radius: 4px;
+}
+
+.invoicePanel .sapMPanelContent {
+  padding: 0.75rem 0.875rem 0.875rem;
+}
+
+.trackingWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.invoiceSummary,
+.metricsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summaryRow,
+.metricsHeaderRow,
+.metricsValueRow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.leadCell,
+.amountCell,
+.percentCell,
+.metricsHeaderCell,
+.metricsValueCell {
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  background: #ededf1;
+  border: 1px solid #d3d3d7;
+  font-size: 0.875rem;
+  line-height: 44px;
+}
+
+.leadCell,
+.amountCell,
+.percentCell,
+.metricsHeaderCell,
+.metricsValueCell {
+  display: flex !important;
+  align-items: center;
+}
+
+.leadCell {
+  width: 182px;
+  justify-content: flex-start;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.amountCell {
+  width: 120px;
+  justify-content: flex-end;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.percentCell {
+  width: 72px;
+  justify-content: center;
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+.metricsHeaderCell,
+.metricsValueCell {
+  width: 118px;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.metricsHeaderCell {
+  font-weight: 600;
+  color: #2b2b2b;
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.metricsValueCell {
+  font-weight: 500;
+  color: #333;
+}
+
+.leadCell .sapMText,
+.amountCell .sapMText,
+.percentCell .sapMText,
+.metricsHeaderCell .sapMText,
+.metricsValueCell .sapMText {
+  display: block;
+  width: 100%;
+}
+
+.amountCell .sapMText {
+  text-align: right;
+}
+
+.percentCell .sapMText,
+.metricsHeaderCell .sapMText,
+.metricsValueCell .sapMText {
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .trackingWrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+.priceBlocks {
+  gap: 2rem;
+  align-items: start;
+}
+
+.priceBlock {
+  gap: 0.5rem;
+}
+
+.priceBlockRow {
+  gap: 0.5rem;
+}
+
+.priceBlockHeader {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  border: 1px solid #7f7f7f;
+  background: #ededf1;
+  font-weight: 600;
+}
+
+.wideCell {
+  width: 7.5rem;
+}
+
+.narrowCell {
+  width: 5rem;
+}
+.addressDetailsPopover .sapMPopoverCont {
+    padding: 0;
+    background: #ffffff;
+}
+
+.addressDetailsPopover .sapMDialogScrollCont {
+    padding: 0;
+}
+
+.addressDetailsPopover .adpHeader {
+    padding: 16px 28px 14px;
+    border-bottom: 1px solid #d9dde3;
+    background: #ffffff;
+}
+
+.addressDetailsPopover .adpHeaderTitle {
+    color: #1f2d3d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.addressDetailsPopover .adpContent {
+    box-sizing: border-box;
+    padding: 28px 48px 34px;
+}
+
+.addressDetailsPopover .adpTopGrid,
+.addressDetailsPopover .adpBottomGrid {
+    align-items: flex-start;
+    gap: 18px 42px;
+}
+
+.addressDetailsPopover .adpTopGrid {
+    margin-bottom: 34px;
+}
+
+.addressDetailsPopover .adpSection {
+    flex: 1 1 440px;
+    min-width: 360px;
+}
+
+.addressDetailsPopover .adpSectionTitle {
+    margin: 0 0 24px;
+    color: #1f2d3d;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.addressDetailsPopover .adpFieldGrid {
+    margin: 0 -18px;
+}
+
+.addressDetailsPopover .adpField {
+    box-sizing: border-box;
+    min-height: 70px;
+    padding: 0 18px 23px;
+}
+
+.addressDetailsPopover .adpHalfField {
+    flex: 0 0 50%;
+}
+
+.addressDetailsPopover .adpFieldLabel {
+    display: block;
+    margin-bottom: 5px;
+    color: #697586;
+    font-size: 0.95rem;
+    line-height: 1.25;
+}
+
+.addressDetailsPopover .adpFieldValue {
+    display: block;
+    color: #17212b;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+@media (max-width: 700px) {
+    .addressDetailsPopover .adpHeader {
+        padding: 14px 20px;
+    }
+
+    .addressDetailsPopover .adpContent {
+        padding: 22px 20px 26px;
+    }
+
+    .addressDetailsPopover .adpSection {
+        flex-basis: 100%;
+        min-width: 100%;
+    }
+
+    .addressDetailsPopover .adpHalfField {
+        flex-basis: 100%;
+    }
+
+    .addressDetailsPopover .adpTopGrid {
+        margin-bottom: 12px;
+    }
+}
+.billingCalendarSection {
+    padding: 1rem 1.25rem;
+    background: var(--sapGroup_ContentBackground);
+    border: 1px solid var(--sapGroup_ContentBorderColor);
+    border-radius: 0.5rem;
+}
+
+.billingCalendarHeader {
+    min-height: 2.5rem;
+    border-bottom: 1px solid var(--sapList_BorderColor);
+    padding-bottom: 0.75rem;
+}
+
+.billingCalendarHeader .sapMTitle {
+    color: var(--sapTextColor);
+    font-weight: 600;
+}
+
+.billingCalendarContent {
+    padding-top: 0.75rem;
+}
+
+.billingInfoCard {
+    min-height: 5.5rem;
+    padding: 0.875rem 1rem;
+    box-sizing: border-box;
+    background: var(--sapTile_Background);
+    border-radius: 0.375rem;
+}
+
+.billingInfoLabel {
+    color: var(--sapContent_LabelColor);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.billingNetAmount .sapMObjectNumberText {
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.billingNetAmount .sapMObjectNumberUnit {
+    margin-left: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.billingPeriodicForm {
+    min-width: 28rem;
+}
