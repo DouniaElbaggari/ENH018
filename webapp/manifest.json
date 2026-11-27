@@ -1,0 +1,1066 @@
+{
+  "_version": "1.81.0",
+  "sap.app": {
+    "id": "com.eiffage.sdt",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.1",
+      "toolsId": "43695bd5-4056-4be4-8164-7600f5055964"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/API_SALES_ORDER_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "salesOrder": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd/sap/c_salesordermanage_sd/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "synchronizationMode": "None",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "salesContractV4": {
+        "uri": "/sap/opu/odata4/sap/ui_salescontractmanage/srvd/sap/ui_salescontractmanage/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "synchronizationMode": "None",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "SalesOrderTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesordertypemanagevh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithsalesordertype.salesordertype.SalesOrderManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesContractTypeVH": {
+        "uri": "/sap/opu/odata4/sap/ui_salescontractmanage/srvd_f4/sap/c_salescontracttypemanagevh/0001;ps='srvd-ui_salescontractmanage-0001';va='com.sap.gateway.srvd.ui_salescontractmanage.v0001.ae-c_salescontractmanagetp.createwithsalescontracttype.salescontracttype.SalesContractManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesOrgVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesdocsalesorganizationvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithsalesordertype.salesorganization.SalesOrderManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "DistChannelVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_dischannelvaluehelp/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithsalesordertype.distributionchannel.SalesOrderManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "DivisionVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_orgdivisionvaluehelp/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithsalesordertype.organizationdivision.SalesOrderManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SoldToVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_soldtosalesareavh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.soldtoparty'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "CustomerGroupVH": {
+        "uri": "sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_customergroup/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.customergroup'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ShippingConditionVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_shippingcondition/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.shippingcondition'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "IncotermsVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_incotermsclassification/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.incotermsclassification'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "PaymentMethodVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesdocpaymentmethodvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.paymentmethod'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "TermsOfPaymentVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_customerpaymentterms/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.customerpaymentterms'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "DocumentCurrencyVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_currencystdvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.transactioncurrency'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "CustomerPriceGroupVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_customerpricegroup/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.customerpricegroup'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "PriceListTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_pricelisttype/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.pricelisttype'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesOfficeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesofficevaluehelp/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.salesoffice'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesGroupVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesgroupvaluehelp/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.salesgroup'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesDistrictVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_salesdistrict/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.salesdistrict'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ItemCategoryVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsdocitemitemcatdetnvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesorderitemmanage.salesorderitemcategory'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "CustomerAcctAssgmtGroupVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_customeraccountassgmtgroup/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.customeraccountassignmentgroup'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "CountryVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_countryvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.vatregistrationcountry'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ProductVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsordprodbyslsorgdistrchnl/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesorderitemmanage.product'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "UoMVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_productunitsofmeasurevh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesorderitemmanage.requestedquantityunit'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "OrderReasonVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsdocallowedorderreasonvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.sddocumentreason'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "OverallStatusVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_overallsdprocessstatus/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.overallsdprocessstatus'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "TextTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsdoctypetxtdetnproceditmvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordertextmanage.longtextidforedit'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ItemTextTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsdocitmcattxtdetnitmvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesorderitemtextmanage.longtextidforedit'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "LanguageVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_language/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordertextmanage.languageforedit'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "BlockingReasonVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_language/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordertextmanage.languageforedit'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ConditionTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_slsdocitmprcgconditiontypevh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesorderitemmanage.createpricingelement.conditiontype.SalesOrderItemType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "PricingProcedure": {
+        "uri": "/sap/opu/odata4/sap/zui_prcg_proc_det_o4/srvd_a2x/sap/zui_pp_determination/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ConditionTypeConfig": {
+        "uri": "/sap/opu/odata/sap/API_SLSPRICINGCONDITIONTYPE_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "SalesOrderSimulate": {
+        "uri": "/sap/opu/odata/sap/API_SALES_ORDER_SIMULATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "PricingTypeVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_salesdocrepricingpricingtype/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.updateprices.pricingtype.SalesOrderManageType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "BillingBlockVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_billingblockreason/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesorderitemmanage.setbillingblock.itembillingblockreason.SalesOrderItemType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "RejectionReasonVH": {
+        "uri": "sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/i_salesdocallowedrjcnrsn/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesorderitemmanage.setrejectionreason.salesdocumentrjcnreason.SalesOrderItemType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "BillingDocument": {
+        "uri": "/sap/opu/odata4/sap/api_billingdocument/srvd_a2x/sap/billingdocument/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesOrderDocFlow": {
+        "uri": "/sap/opu/odata4/sap/zapi_sales_doc_flow/srvd/sap/zapi_sales_doc_flow/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "BillingDoc": {
+        "uri": "/sap/opu/odata/sap/ZSD_BILLING_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "ItemPartners": {
+        "uri": "/sap/opu/odata4/sap/zui_salesorderitempartner/srvd_a2x/sap/zui_salesorderitempartner/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "WBSElementVH": {
+        "uri": "/sap/opu/odata4/sap/zapi_wbs_element/srvd_a2x/sap/zapi_wbs_element/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesContractVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salescontrforcreatewithrefvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithreffromslscontract.salescontract.SalesOrderManageType.X'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "SalesContract": {
+        "uri": "/sap/opu/odata/sap/API_SALES_CONTRACT_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "PartnerFunctionsVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_partnerfuncbysalesdoctypevh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createpartner.partnerfunction.SalesOrderManageType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "ItemPartnerFunctionsVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_partnerfuncbyslsdocitemcatvh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesorderitemmanage.createpartner.partnerfunction.SalesOrderItemType'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "BillingPlanTypeVH": {
+        "uri": "/sap/opu/odata4/sap/zapi_billing_plan_type/srvd_a2x/sap/zapi_billing_plan_type/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "CompanyCodeVH": {
+        "uri": "/sap/opu/odata4/sap/zapi_company_code/srvd_a2x/sap/zapi_company_code/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      },
+      "Attachments": {
+        "uri": "/sap/opu/odata/sap/CV_ATTACHMENT_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "SalesDocCreatedByVH": {
+        "uri": "/sap/opu/odata4/sap/c_salesordermanage_srv/srvd_f4/sap/c_salesdocumentuservh/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.et-c_salesordermanage.createdbyuser'/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": true,
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.144.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.ui.comp": {}
+      },
+      "components": {
+        "sap.se.mi.plm.lib.attachmentservice.attachment": {
+          "lazy": true
+        }
+      }
+    },
+    "componentUsages": {
+      "attachmentReuseComponent": {
+        "name": "sap.se.mi.plm.lib.attachmentservice.attachment",
+        "settings": {}
+      }
+    },
+    "resourceRoots": {
+      "sap.se.mi.plm.lib.attachmentservice": "/sap/bc/ui5_ui5/sap/plm_ath_cres1/",
+      "sap.s4h.cfnd.featuretoggle": "/sap/bc/ui5_ui5/sap/featuretoggles1/"
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.eiffage.sdt.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "useBatch": true
+        }
+      },
+      "salesOrderOData": {
+        "dataSource": "salesOrder",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "groupId": "$auto",
+          "updateGroupId": "salesOrderUpdateGroup"
+        }
+      },
+      "salesContractOData": {
+        "dataSource": "salesContractV4",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "groupId": "$auto",
+          "updateGroupId": "salesOrderUpdateGroup"
+        }
+      },
+      "salesOrderTypeVH": {
+        "dataSource": "SalesOrderTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesContractTypeVH": {
+        "dataSource": "SalesContractTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesOrgVH": {
+        "dataSource": "SalesOrgVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "distChannelVH": {
+        "dataSource": "DistChannelVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "divisionVH": {
+        "dataSource": "DivisionVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "soldToVH": {
+        "dataSource": "SoldToVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "customerGroupVH": {
+        "dataSource": "CustomerGroupVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "shippingConditionVH": {
+        "dataSource": "ShippingConditionVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "incotermsVH": {
+        "dataSource": "IncotermsVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "paymentMethodVH": {
+        "dataSource": "PaymentMethodVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "termsOfPaymentVH": {
+        "dataSource": "TermsOfPaymentVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "documentCurrencyVH": {
+        "dataSource": "DocumentCurrencyVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "customerPriceGroupVH": {
+        "dataSource": "CustomerPriceGroupVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "priceListTypeVH": {
+        "dataSource": "PriceListTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesOfficeVH": {
+        "dataSource": "SalesOfficeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesGroupVH": {
+        "dataSource": "SalesGroupVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesDistrictVH": {
+        "dataSource": "SalesDistrictVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "itemCategoryVH": {
+        "dataSource": "ItemCategoryVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "customerAcctAssgmtGroupVH": {
+        "dataSource": "CustomerAcctAssgmtGroupVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "countryVH": {
+        "dataSource": "CountryVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "productVH": {
+        "dataSource": "ProductVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "uomVH": {
+        "dataSource": "UoMVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "orderReasonVH": {
+        "dataSource": "OrderReasonVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "overallStatusVH": {
+        "dataSource": "OverallStatusVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "textTypeVH": {
+        "dataSource": "TextTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "itemTextTypeVH": {
+        "dataSource": "ItemTextTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "languageVH": {
+        "dataSource": "LanguageVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "blockingReasonVH": {
+        "dataSource": "BlockingReasonVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "conditionTypeVH": {
+        "dataSource": "ConditionTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "pricingProcedure": {
+        "dataSource": "PricingProcedure",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": false
+        }
+      },
+      "conditionTypeConfig": {
+        "dataSource": "ConditionTypeConfig",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "salesOrderSimulate": {
+        "dataSource": "SalesOrderSimulate",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "pricingTypeVH": {
+        "dataSource": "PricingTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "billingBlockVH": {
+        "dataSource": "BillingBlockVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "rejectionReasonVH": {
+        "dataSource": "RejectionReasonVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "billingDocument": {
+        "dataSource": "BillingDocument",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesOrderDocFlow": {
+        "dataSource": "SalesOrderDocFlow",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "billingDoc": {
+        "dataSource": "BillingDoc",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "itemPartners": {
+        "dataSource": "ItemPartners",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "wbsElementVH": {
+        "dataSource": "WBSElementVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesContractVH": {
+        "dataSource": "SalesContractVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "salesContract": {
+        "dataSource": "SalesContract",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+      "partnerFunctionsVH": {
+        "dataSource": "PartnerFunctionsVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "itemPartnerFunctionsVH": {
+        "dataSource": "ItemPartnerFunctionsVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "billingPlanTypeVH": {
+        "dataSource": "BillingPlanTypeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "companyCodeVH": {
+        "dataSource": "CompanyCodeVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "attachments": {
+        "dataSource": "Attachments",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      },
+       "salesDocCreatedByVH": {
+        "dataSource": "SalesDocCreatedByVH",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.eiffage.sdt.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "SalesOrders",
+          "pattern": "",
+          "target": [
+            "SalesOrders"
+          ]
+        },
+        {
+          "name": "Create",
+          "pattern": "Create:?query:",
+          "target": [
+            "Create"
+          ]
+        },
+        {
+          "name": "CreateContract",
+          "pattern": "CreateContract:?query:",
+          "target": [
+            "CreateContract"
+          ]
+        },
+        {
+          "name": "SalesOrderDetails",
+          "pattern": "SalesOrder/{SalesOrder}",
+          "target": [
+            "SalesOrderDetails"
+          ]
+        },
+        {
+          "name": "SalesContractDetails",
+          "pattern": "SalesContract/{SalesContract}",
+          "target": [
+            "SalesContractDetails"
+          ]
+        },
+        {
+          "name": "SalesOrderItemDetails",
+          "pattern": "SalesOrderItem/{Index}",
+          "target": [
+            "SalesOrderItemDetails"
+          ]
+        },
+        {
+          "name": "SalesContractItemDetails",
+          "pattern": "SalesContractItem/{Index}",
+          "target": [
+            "SalesContractItemDetails"
+          ]
+        },
+        {
+          "name": "CreateInvoice",
+          "pattern": "CreateInvoice",
+          "target": [
+            "CreateInvoice"
+          ]
+        },
+        {
+          "name": "CreateProgressInvoice",
+          "pattern": "ProgressInvoice/{SalesOrder}",
+          "target": [
+            "CreateProgressInvoice"
+          ]
+        },
+        {
+          "name": "CreateInvoiceByItem",
+          "pattern": "ItemInvoice/{SalesOrder}",
+          "target": [
+            "CreateInvoiceByItem"
+          ]
+        },
+        {
+          "name": "CreateInvoiceItemDetail",
+          "pattern": "InvoiceItemDetail/{Path}",
+          "target": [
+            "CreateInvoiceItemDetail"
+          ]
+        },
+        {
+          "name": "CreateAdvanceInvoice",
+          "pattern": "CreateAdvanceInvoice",
+          "target": [
+            "CreateAdvanceInvoice"
+          ]
+        }
+      ],
+      "targets": {
+        "SalesOrders": {
+          "id": "Main",
+          "name": "Main"
+        },
+        "Create": {
+          "id": "create",
+          "name": "Detail",
+          "controlAggregation": "pages"
+        },
+        "CreateContract": {
+          "id": "createContract",
+          "name": "contract.Detail",
+          "controlAggregation": "pages"
+        },
+        "SalesOrderDetails": {
+          "id": "details",
+          "name": "Detail",
+          "controlAggregation": "pages"
+        },
+        "SalesContractDetails": {
+          "id": "details",
+          "name": "contract.Detail",
+          "controlAggregation": "pages"
+        },
+        "SalesOrderItemDetails": {
+          "id": "itemDetails",
+          "name": "ItemDetails",
+          "controlAggregation": "pages"
+        },
+        "SalesContractItemDetails": {
+          "id": "itemDetails",
+          "name": "contract.ItemDetails",
+          "controlAggregation": "pages"
+        },
+        "CreateInvoice": {
+          "id": "createInvoice",
+          "name": "invoice.CreateInvoice",
+          "controlAggregation": "pages"
+        },
+        "CreateProgressInvoice": {
+          "id": "progressInvoice",
+          "name": "ProgressInvoice",
+          "controlAggregation": "pages"
+        },
+        "CreateInvoiceByItem": {
+          "id": "itemInvoice",
+          "name": "ItemInvoice",
+          "controlAggregation": "pages"
+        },
+        "CreateInvoiceItemDetail": {
+          "id": "invoiceItemDetail",
+          "name": "invoice.InvoiceItemDetails",
+          "controlAggregation": "pages"
+        },
+        "CreateAdvanceInvoice": {
+          "id": "advanceInvoice",
+          "name": "invoice.advance.CreateAdvanceInvoice",
+          "controlAggregation": "pages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.eiffage.sdt.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}
