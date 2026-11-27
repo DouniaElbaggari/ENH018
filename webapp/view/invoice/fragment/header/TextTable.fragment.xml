@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Table 
+    id="tableInvoiceTextDisplay" 
+    items="{billingDocDisp>/to_Text}" 
+    mode="SingleSelectMaster" 
+    alternateRowColors="true" 
+    sticky="ColumnHeaders"
+    selectionChange=".onItemPress">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Sales Order Texts" level="H2"/>
+        <ToolbarSpacer/>
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column>
+        <Text text="Text Type"/>
+      </Column>
+      <Column>
+        <Text text="Language"/>
+      </Column>
+      <Column>
+        <Text text="Text"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{billingDocDisp>LongTextID}"/>
+          <Text text="{billingDocDisp>Language}"/>
+          <TextArea value="{billingDocDisp>LongText}" rows="3" width="100%" growing="true" editable="false"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

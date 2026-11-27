@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+        <Table id="invoiceItemTable" 
+                    items="{billingDocDisp>/to_Item}" 
+                    growing="true" 
+                    growingThreshold="20" 
+                    alternateRowColors="true" 
+                    sticky="ColumnHeaders"
+                    mode="SingleSelectMaster" itemPress=".onItemPress">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Items" level="H2"/>
+                            </content>
+                        </OverflowToolbar>
+                     </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Label text="Item"/>
+                        </Column>
+                        <Column>
+                            <Label text="Product"/>
+                        </Column>
+                        <Column>
+                            <Label text="Invoiced Quantity"/>
+                        </Column>
+                        <Column>
+                            <Label text="Net Value"/>
+                        </Column>
+                        <Column>
+                            <Label text="Tax Amount"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation">
+                            <cells>
+                               <Text text="{billingDocDisp>SalesOrderItem}"/>
+                               <Text text="{billingDocDisp>Material}"/>
+                               <HBox>
+                                    <Text text="{billingDocDisp>InvoicedQuantity}"/>
+                                    <Text text="{billingDocDisp>RequestedQuantityUnit}"/>
+                               </HBox>
+                               <HBox>
+                                    <Text text="{billingDocDisp>NetAmount}"/>
+                                    <Text text="{billingDocDisp>TransactionCurrency}"/>
+                               </HBox>
+                               <HBox>
+                                    <Text text="{billingDocDisp>TaxAmount}"/>
+                                    <Text text="{billingDocDisp>TransactionCurrency}"/>
+                               </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>    
+
+</core:FragmentDefinition>

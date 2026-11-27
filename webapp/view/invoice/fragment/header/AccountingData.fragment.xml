@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+                <form:SimpleForm  editable="true" layout="ResponsiveGridLayout" title="Accounting Data" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="3" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false">
+
+                    <form:content>
+                        <core:Title text=""/>
+                        <Label text="Acct Assmt Grp Cust."/>
+                        <Text text=""/>
+
+                        <Label text="Posting Status"/>
+                        <Text text=""/>
+
+                        <Label text="Clearing Status"/>
+                        <Text text=""/>
+
+                        <core:Title text=""/>
+
+                        <Label text="Dunning Area"/>
+                        <Text text=""/>
+
+                        <Label text="Dunning Block"/>
+                        <Text text=""/>
+                        
+                        <Label text="Dunning Key"/>
+                        <Text text=""/>
+                    </form:content>
+                </form:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+        title=""
+        labelSpanXL="12"
+        labelSpanL="12"
+        labelSpanM="12"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="0"
+        emptySpanL="0"
+        emptySpanM="0"
+        emptySpanS="3"
+        columnsXL="3"
+        columnsL="3"
+        columnsM="2"
+        singleContainerFullSize="false">
+        <form:content>
+            <core:Title text="Document Data" />
+            <Label text="Billing Date" />
+            <Text text="{path: 'billingDocDisp>/BillingDocumentDate', formatter: '.formatter.formatDocumentDate'}" />
+
+            <Label text="Billing Type" />
+            <Text text="ZF2" />
+
+            <Label text="Reference" />
+            <Text text="{billingDocDisp>/PurchaseOrderByCustomer}" />
+
+            <core:Title text="Organizational Data" />
+
+            <Label text="Company Code" />
+            <Text text="{billingDocDisp>/CompanyCode}" />
+
+            <Label text="Sales Organization" />
+            <Text text="{billingDocDisp>/SalesOrganization}" />
+
+            <Label text="Distribution Channel" />
+            <Text text="{billingDocDisp>/DistributionChannel}" />
+
+            <Label text="Division" />
+            <Text text="{billingDocDisp>/OrganizationDivision}" />
+
+            <core:Title text="Additional Data" />
+
+            <Label text="Man. Invoice Maint." />
+            <Text text="" />
+        </form:content>
+    </form:SimpleForm>
+</core:FragmentDefinition>

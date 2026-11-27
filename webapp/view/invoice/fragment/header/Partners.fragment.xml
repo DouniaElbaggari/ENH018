@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+        <Table id="Partners" 
+                    items="{billingDocDisp>/to_Partner}" 
+                    growing="true" 
+                    growingThreshold="20" 
+                    alternateRowColors="true" 
+                    sticky="ColumnHeaders"
+                    mode="None">
+
+                    <headerToolbar>
+			            <OverflowToolbar>
+				            <content>
+					            <Title text="Business Partners" level="H2"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Label text="Role"/>
+                        </Column>
+                        <Column>
+                            <Label text="Name"/>
+                        </Column>
+                        <Column>
+                            <Label text="Address"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                               <Text text="{billingDocDisp>PartnerFunction}"/>
+                               <Text text="{billingDocDisp}"/>
+                               <Text text="{billingDocDisp}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>    
+</core:FragmentDefinition>
