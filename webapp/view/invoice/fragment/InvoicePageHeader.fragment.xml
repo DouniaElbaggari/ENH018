@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+    controllerName="com.eiffage.sdt.controller.InvoiceByItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <VBox class="sapUiSmallMarginBottom">
+        <Title text="Billing Document" level="H1" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
+
+        <Text text="{invoicePageHeader>/BillingDocument}" class="sapUiSmallMarginBegin sapUiSmallMarginBottom" />
+
+        <HBox width="100%" wrap="Wrap" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom">
+
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="Payer" />
+                <Text text="{invoicePageHeader>/Payer}"/>
+            </VBox>
+
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="Sold-to Party" />
+                <Text text="{invoicePageHeader>/SoldToParty}" />
+            </VBox>
+
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="Billing Document Status" />
+                <ObjectStatus
+                    text="{invoicePageHeader>/Status}"
+                    state="{invoicePageHeader>/State}" />
+            </VBox>
+
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="Net Value" />
+                <ObjectNumber
+                    number="{invoicePageHeader>/NetAmount}"
+                    unit="EUR" />
+            </VBox>
+
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="Tax Amount" />
+                <ObjectNumber
+                    number="{invoicePageHeader>/TaxAmount}"
+                    unit="EUR" />
+            </VBox>
+
+            <VBox>
+                <Label text="Total Amount" />
+                <ObjectNumber
+                    number="{invoicePageHeader>/TotalAmount}"
+                    unit="EUR"
+                    emphasized="true" />
+            </VBox>
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>

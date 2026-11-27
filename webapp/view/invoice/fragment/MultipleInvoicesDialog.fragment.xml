@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+  <Dialog
+    id="multipleInvoicesDialog"
+    title="{i18n>multipleInvoicesTitle}"
+    contentWidth="48rem"
+    resizable="true"
+    class="sapUiResponsiveContentPadding">
+
+    <content>
+      <VBox class="sapUiSmallMarginBottom">
+        <MessageStrip
+          text="{i18n>multipleInvoicesWarning}"
+          type="Warning"
+          showIcon="true"
+          showCloseButton="false" />
+
+        <ObjectStatus
+          class="sapUiSmallMarginTop sapUiSmallMarginBottom"
+          text="{= ${invoicePreview>/invoices}.length + ' ' + ${i18n>invoicesToCreate} }"
+          state="Information" />
+
+        <List
+          items="{invoicePreview>/invoices}"
+          growing="true"
+          growingThreshold="10"
+          showSeparators="Inner">
+
+          <items>
+            <CustomListItem>
+              <VBox class="sapUiSmallMargin">
+                <HBox
+                  alignItems="Center"
+                  justifyContent="SpaceBetween">
+                  <Title
+                    text="{= ${i18n>invoiceNumber} + ' ' + ${invoicePreview>number} }"
+                    level="H4" />
+                  <ObjectStatus
+                    text="{= ${invoicePreview>items}.length + ' ' + ${i18n>positions} }"
+                    state="Information" />
+                </HBox>
+
+                <List
+                  class="sapUiSmallMarginTop"
+                  items="{invoicePreview>items}"
+                  showSeparators="None">
+                  <items>
+                    <StandardListItem
+                      title="{= ${i18n>position} + ' ' + ${invoicePreview>position} + ' — ' + ${i18n>article} + ' ' + ${invoicePreview>article} }"
+                      description="{invoicePreview>description}"
+                      type="Inactive" />
+                  </items>
+                </List>
+              </VBox>
+            </CustomListItem>
+          </items>
+        </List>
+      </VBox>
+    </content>
+
+    <beginButton>
+      <Button
+        text="{i18n>cancel}"
+        press=".onCloseMultipleInvoicesDialog" />
+    </beginButton>
+
+    <endButton>
+      <Button
+        text="{i18n>createInvoices}"
+        type="Emphasized"
+        press=".onCreateMultipleInvoices" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+    controllerName="com.eiffage.sdt.controller.InvoiceByItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+                <IconTabBar
+                    id="idTabBarInvoiceCreate"
+                    headerMode="Inline"
+                    expanded="{device>/isNoPhone}"
+                    applyContentPadding="false">
+                    <items>
+                        <IconTabFilter
+                            text="General Information"
+                            key="genInfo"
+                            id="genInfoInvoice">
+                            <content>
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.GeneralInformation" type="XML"/>
+                            </content>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Terms and Conditions"
+                            key="terms"
+                            id="terms">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.Terms"  type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Items"
+                            key="items"
+                            id="itemsInvoice">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.Items" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Business Partners"
+                            key="partners"
+                            id="partners">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.Partners" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Accounting Data"
+                            key="accountingData"
+                            id="accountingData">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.AccountingData" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Pricing Data"
+                            key="pricingData"
+                            id="pricingData">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.PricingData" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Pricing Elements"
+                            key="pricingElements"
+                            id="pricingElements">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.PricingElements" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Taxes"
+                            key="taxes"
+                            id="taxes">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.Taxes" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Texts"
+                            key="texts"
+                            id="textsInvoice">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.TextTable" type="XML"/>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            text="Output Items"
+                            key="output"
+                            id="output">
+                            <core:Fragment fragmentName="com.eiffage.sdt.view.invoice.fragment.header.Output" type="XML"/>
+                        </IconTabFilter>
+                        
+                    </items>
+                </IconTabBar>
+</core:FragmentDefinition>
