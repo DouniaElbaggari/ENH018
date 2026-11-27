@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+  <Table id="salesContractsTable" items="{salesContractOData>/SalesContractManage}" mode="SingleSelectMaster" itemPress=".onItemPress">
+
+    <headerToolbar>
+      <OverflowToolbar>
+        <Title text="Sales Contracts" level="H2"/>
+        <ToolbarSpacer/>
+        <!--<Button text="Create" press=".onOpenContractTypeDialog"/>-->
+      </OverflowToolbar>
+    </headerToolbar>
+
+    <columns>
+      <Column>
+        <Text text="Sales Contract"/>
+      </Column>
+      <Column>
+        <Text text="Sold-to Party"/>
+      </Column>
+      <Column>
+        <Text text="Customer Reference"/>
+      </Column>
+      <!--<Column>
+        <Text text="Requested Delivery Date"/>
+      </Column>-->
+       <!--<Column>
+        <Text text="Overall Status"/>
+      </Column>-->
+       <Column>
+        <Text text="Net Value"/>
+      </Column>
+       <Column>
+        <Text text="Document Date"/>
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem type="Navigation">
+        <cells>
+          <Text text="{salesContractOData>SalesContract}"/>
+          <Text text="{salesContractOData>SoldToParty}"/>
+          <Text text="{salesContractOData>CustomerName}"/>
+          <!--<Text text="{salesContractOData>RequestedDeliveryDate}"/>-->
+          <!--<Text text="{salesOrderOData>OverallSDProcessStatus}"/>-->
+          <Text text="{salesContractOData>TotalNetAmount}"/>
+          <Text text="{salesContractOData>BillingDocumentDate}"/>
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+</core:FragmentDefinition>

@@ -1,0 +1,138 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar">
+
+    <fb:FilterBar
+        id="contractfilterBar"
+        persistencyKey="myPersKey"
+        useToolbar="false"
+        search=".onSearchContracts"
+        filterChange=".onFilterChange"
+        afterVariantLoad=".onAfterVariantLoad">
+
+        <fb:filterGroupItems>
+            <fb:FilterGroupItem
+                name="SalesContract"
+                label="Sales Contract"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="salesContractMultiInput"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onSalesContractVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <fb:FilterGroupItem
+                name="SoldToParty"
+                label="Sold-to Party"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="soldToMultiInputContract"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onSoldToVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <fb:FilterGroupItem
+                name="PurchaseOrderByCustomer"
+                label="Customer Reference"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="custRefMultiInputContract"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onCustRefVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <!--<fb:FilterGroupItem
+                name="RequestedDeliveryDate"
+                label="Requester Delivery Date"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <DatePicker />
+                </fb:control>
+            </fb:FilterGroupItem>-->
+
+            <fb:FilterGroupItem
+                name="SalesContractDate"
+                label="Document Date"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <DatePicker />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <fb:FilterGroupItem
+                name="SalesOrganizationForFilter"
+                label="Sales Organization"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="multiInSalesOrgContract"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onSalesOrgVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <fb:FilterGroupItem
+                name="DistributionChannel"
+                label="Distribution Channel"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="multiInDistChannelContract"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onDistrChannelVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+
+            <fb:FilterGroupItem
+                name="OrganizationDivision"
+                label="Division"
+                groupName="Group1"
+                visibleInFilterBar="true">
+                <fb:control>
+                    <MultiInput
+                        id="multiInDivitionContract"
+                        width="100%"
+                        placeholder=""
+                        showValueHelp="true"
+                        valueHelpRequest=".onDivisionVH"
+                        tokenUpdate=".onTokenUpdate"
+                        maxTokens="10" />
+                </fb:control>
+            </fb:FilterGroupItem>
+        </fb:filterGroupItems>
+    </fb:FilterBar>
+</core:FragmentDefinition>
